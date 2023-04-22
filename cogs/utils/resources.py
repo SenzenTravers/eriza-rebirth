@@ -65,6 +65,18 @@ sen22 = "J'AVAIS OUBLIÉ"
 sen23 = "*points-virgules gratuits*"
 sen24 = "HAHAHAHAHA(TM Sen)"
 sen25 = "Fjkfhskfjsd"
+sen26 = "Je veux manger du sucré........... ;_;"
+sen27 = "*mange des légumes congelés*"
+sen28 = "Et c'est ainsi que j'ai économisé au moins DEUX EUROS !!!"
+sen29 = ":zn:"
+sen30 = "Des crêpes........."
+sen31 = "CHOCOLAT <3"
+sen32 = "Oui, je vendrais père et mère pour de la Haagen Däasz mais en ma défense, je n'ai aucune excuse"
+sen33 = "*se brûle bêtement*"
+sen34 = "*échoue à allumer à un feu*"
+sen35 = "*se brûle en échouant à allumer un feu*"
+sen36 = "I <3 les cochons (l'animal)"
+sen37 = "https://tenor.com/view/pig-brushed-gif-21242185"
 
 # LAMENTS
 lament1 = "Ah ouais, quand même..."
@@ -107,7 +119,8 @@ gojo = [gojo1, gojo2, gojo3, gojo4, gojo5, gojo6, gojo7, gojo8, gojo9, gojo10,
 
 sensim = [sen1, sen2, sen3, sen4, sen5, sen6, sen7, sen8, sen9, sen10, sen11,
     sen12, sen13, sen14, sen15, sen16, sen17, sen18, sen19, sen20, sen21, sen22,
-    sen23, sen24, sen25]
+    sen23, sen24, sen25, sen26, sen27, sen28, sen29, sen30, sen31, sen32, sen33,
+    sen34, sen35, sen36, sen37]
 
 laments = [
     lament1, lament2, lament3, lament4, lament5, lament6, lament7, lament8, lament9,

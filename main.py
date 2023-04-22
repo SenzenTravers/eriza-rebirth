@@ -4,15 +4,15 @@ from decouple import config
 import discord
 from discord.ext import commands
 
-from cogs import coureur, shitpost
+from cogs import configurateur, coureur, shitpost
 
 
 class Eriza(commands.Bot):        
     async def on_ready(self):
         print(f'Bonjour, {self.user}')
-        await self.add_cog(coureur.Coureur(bot))
-        await self.add_cog(shitpost.Shitpost(bot))
-
+        await self.load_extension('cogs.coureur')
+        await self.load_extension('cogs.shitpost')
+        await self.load_extension('cogs.configurateur')
 
 intents = discord.Intents.all()
 bot = Eriza(command_prefix="!", intents=intents)
