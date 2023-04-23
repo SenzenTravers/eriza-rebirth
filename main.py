@@ -12,6 +12,7 @@ class Eriza(commands.Bot):
         await self.load_extension('cogs.coureur')
         await self.load_extension('cogs.shitpost')
         await self.load_extension('cogs.configurateur')
+        await self.load_extension('cogs.Productivity')
 
 intents = discord.Intents.all()
 bot = Eriza(command_prefix="!", help_command = None, intents=intents)
