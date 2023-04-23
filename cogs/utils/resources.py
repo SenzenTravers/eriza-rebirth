@@ -38,6 +38,8 @@ gojo36 = "https://mykombini-ab5a.kxcdn.com/147237-thickbox/look-up-jujutsu-kaise
 gojo37 = "https://mykombini-ab5a.kxcdn.com/147241-thickbox/look-up-jujutsu-kaisen-satoru-gojo-megahouse.jpg"
 gojo38 = "https://mykombini-ab5a.kxcdn.com/147225-thickbox/look-up-jujutsu-kaisen-satoru-gojo-megahouse.jpg"
 gojo39 = "https://static0.cbrimages.com/wordpress/wp-content/uploads/2021/05/gojo-satoru-featured.jpg"
+gojo40 = "https://twitter.com/tiyu0710/status/1650164980204072961"
+gojo41 = "https://twitter.com/3110_jj/status/1650164528548827137/photo/1"
 
 # SEN
 sen1 = "*oublie la conversation*"
@@ -112,10 +114,24 @@ lament30 = "):"
 lament31 = "Wow...."
 
 ############## LISTE
+desapprobation = [":zn:", ":offense:",
+            "INÉDIT : une majorité des Français ne voteraient pas pour Sen aux présidentielles 2024",
+            ">: (", "Sen a tort", "Beurk, une Sen", "*Sen slander*",
+            "Eh bien JE DÉSAPPROUVE", ":black_heart:"]
+
 gojo = [gojo1, gojo2, gojo3, gojo4, gojo5, gojo6, gojo7, gojo8, gojo9, gojo10,
     gojo11, gojo12, gojo13, gojo14, gojo15, gojo16, gojo17, gojo18, gojo19,
     gojo20, gojo21, gojo22, gojo23, gojo24, gojo25, gojo26, gojo27, gojo28, gojo29,
-    gojo30, gojo31, gojo32, gojo33, gojo34, gojo35, gojo36, gojo37, gojo38, gojo39]
+    gojo30, gojo31, gojo32, gojo33, gojo34, gojo35, gojo36, gojo37, gojo38, gojo39,
+    gojo40, gojo41]
+
+jesus = ["JÉSUS !!!", "https://tenor.com/view/jesus-christ-wink-smile-jesus-gif-15483760",
+            "JÉSUS :D :D :D", "*murmure* Jésus.....", "... Jésus ?", "Jésus ewe",
+            "Jésuuuuuuuuuuuuus", "*Djézouss*", "https://tenor.com/view/jesus-peeking-i-see-you-guilty-gif-25117299",
+            "Jésus ! ;3", "J É S U S", "𝒥𝑒𝓈𝓊𝓈", "ʆЄƧƲƧ", "🐺♣  ן乇𝐬𝓤s  🐒🐳",
+            "イエス", "JÉSUS :weary:", "Jezus... (avec l'accent polonais)",
+            "Jesus ! (avec l'accent danois)", "*Rézous*",
+            "Je le sais bien, que vous blasphémez è_é"]
 
 sensim = [sen1, sen2, sen3, sen4, sen5, sen6, sen7, sen8, sen9, sen10, sen11,
     sen12, sen13, sen14, sen15, sen16, sen17, sen18, sen19, sen20, sen21, sen22,

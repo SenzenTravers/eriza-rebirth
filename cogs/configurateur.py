@@ -4,6 +4,7 @@ import os
 import discord
 from discord.ext import commands
 
+from .utils.help_texts import *
 
 class Config(commands.Cog):
     def __init__(self, bot):
@@ -72,11 +73,33 @@ class Config(commands.Cog):
                         )
                 await ctx.send(embed=embed)
 
-    @commands.command()
-    async def cancel(self, ctx):
+    @commands.command(description="Annule le sprint en cours.")
+    async def annuler(self, ctx):
         await self.bot.reload_extension(f"cogs.coureur")
         await ctx.send("Le spr... La course a été annulée.")
 
+    @commands.command(
+        aliases=["help"],
+        description="La fonctionnalité d'aide, tiens.")
+    async def aide(self, ctx):
+        embed = discord.Embed(
+            title="(À l')Aide",
+            color=0x808080,
+            timestamp=ctx.message.created_at
+        )
+
+        embed.add_field(
+            name="**SESSIONS D'ÉCRITURE**",
+            value=coureur_text,
+            inline=False
+        )
+
+        embed.add_field(
+            name="**CHOSES SÉRIEUSES**",
+            value=shitpost_text,
+            inline=False
+        )
+        await ctx.send(embed=embed)
 
 async def setup(bot): # set async function
     await bot.add_cog(Config(bot)) # Use await
