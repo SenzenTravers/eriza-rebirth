@@ -14,6 +14,11 @@ coureur_text = """
     `!annuler` *Annuler la session en cours.* 
     """
 
+productivity_text = """
+    `!appels` *pour recevoir par MP une liste d'appels à texte listés par date de rendu.
+    `ALIAS : !a`
+    """
+
 shitpost_text = """
     `!gojo` *pour recevoir une dose de Gojo.* :warning: ATTENTION : spoiler pour le manga.
     `ALIAS : !g`

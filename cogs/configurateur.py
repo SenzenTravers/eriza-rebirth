@@ -95,6 +95,12 @@ class Config(commands.Cog):
         )
 
         embed.add_field(
+            name="**PRODUCTIVITÉ (sisi)**",
+            value=productivity_text,
+            inline=False
+        )
+
+        embed.add_field(
             name="**CHOSES SÉRIEUSES**",
             value=shitpost_text,
             inline=False

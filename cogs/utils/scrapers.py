@@ -20,6 +20,7 @@ async def scrape(url, func):
 
 
 class WritingContest:
+    @staticmethod
     async def return_all_contests(soup):
         """
         Return a list of current writing contests.
@@ -38,6 +39,7 @@ class WritingContest:
         except:
             return None
     
+    @staticmethod
     async def return_contest(contest):
         title = unicodedata.normalize("NFKD", contest.find('h2').get_text(strip=True))
         subtitle = unicodedata.normalize("NFKD", contest.find('h3').text)
@@ -45,35 +47,50 @@ class WritingContest:
         tags = tags.find_all('a')
         tags = ", ".join([unicodedata.normalize("NFKD", tag.text).capitalize() for tag in tags])
         categories = contest.find_all("p", "mv0")
+        link = contest.find('a', class_="db navy")["href"]
 
         results = [title, subtitle, tags]
 
         for cat in categories:
             cat = unicodedata.normalize("NFKD", cat.get_text(strip=True))
-            if ("Frais d'inscription" in cat) and \
-            ((":0 €" not in cat) or (": 0 €" not in cat)) :
+            if (r"Frais d'inscription" in cat) and r":0 €" not in cat:
                 break
             else:
                 results.append(cat)
             
+        results.append(link)
         return results
     
+    @staticmethod
     async def format_contests(by_added=False, by_deadline=False):        
         if by_added:
             url = "https://textes-a-la-pelle.fr/?filter=&sort=publication_date"
         else:
             url = "https://textes-a-la-pelle.fr/?filter=&sort=closing_date"
 
-        contests = await scrape(url, WritingContest.return_contests)
+        contests = await scrape(url, WritingContest.return_all_contests)
 
         results = []
 
         for con in contests:
-            con[0] = f"🖋 **{con[0]}**"
-            con[1] = f"*{con[1]}*"
+            con[0] = f"\n🖋 **{con[0].upper()}**"
+            con[1] = f"**{con[1]}**"
+            con[2] = f"*{con[2]}*\n"
+            
+            con = WritingContest.format_contest_items(con)
+            con[-1] = f"**Lien :** {con[-1]}"
             con = "\n".join(con)
-            con = con.replace(r'\n', '\n')
-            con = con.replace(' :', ' : ')
             results.append(con)
 
         return results
+    
+    @staticmethod
+    def format_contest_items(contest_list):
+        """
+        Properly format categories formatted as name: desc
+        """
+        return [
+            "**" + bit.replace(" :", "** : ")
+            if " :" in bit
+            else bit
+            for bit in contest_list]

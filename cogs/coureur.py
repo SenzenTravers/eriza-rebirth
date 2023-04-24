@@ -53,7 +53,7 @@ Vous avez {duration} minutes !""")
 
                 mentions = ", ".join([dude.mention for dude in self.runners.keys()])
                 await ctx.channel.send(f"{mentions}\nABOULEZ LES MOTS ! Vous avez deux (2) minutes.")
-                await asyncio.sleep(5) # REMEMBER CAMENBER
+                await asyncio.sleep(120)
                 finished_list = self.winners_list()
                 self.sprint = False
                 self.coureurs = {}

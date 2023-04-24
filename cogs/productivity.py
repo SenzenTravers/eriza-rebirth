@@ -11,24 +11,24 @@ class Productivity(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    # @commands.command(aliases=['d'])
-    # async def dico(self, ctx, *arg):
-    #     await ctx.channel.send("Je feuillette mon dico...")
-    #     msg = await u.lookup(arg)
-    #     await ctx.channel.send(msg)
-
-    @commands.command(aliases=['a'])
+    @commands.command(aliases=['na'])
     async def new_appels(self, ctx):
         """
         Commande admin ? Ou, plutôt, le bot devrait-il poster automatiquement
         les nouvelles ?
         """
-        await ctx.channel.send("Une seconde, j'allume mon minitel...")
-        async with ctx.channel.typing():
-            msgs = await scrapers.WritingContest.format_contests(by_added=True)
+        # channel = self.bot.get_channel(1100150577708662824)
+        channel = self.bot.get_channel(1059069662127726623)
 
-            for msg in msgs:
-                await ctx.channel.send(msg)
+        msgs = await scrapers.WritingContest.format_contests(by_added=True)
+
+        async for message in channel.history(limit=100):
+            if message.content == "boup":
+                pass
+
+
+        #     for msg in msgs:
+        #         await ctx.channel.send(msg)
 
     @commands.command(aliases=['a'])
     async def appels(self, ctx):
@@ -40,7 +40,7 @@ class Productivity(commands.Cog):
             contests = await scrapers.WritingContest.format_contests(
                 by_added=False, by_deadline=True)
 
-            contests = contests.reverse()
+            contests.reverse()
 
             for contest in contests:
                 user = ctx.message.author
@@ -72,5 +72,5 @@ class Productivity(commands.Cog):
     #     await ctx.channel.send("QUE LA CULTURE COMMENCE")
     #     await ctx.channel.send(await u.rare_word())
 
-async def setup(bot): # set async function
-    await bot.add_cog(Productivity(bot)) # Use await
+async def setup(bot):
+    await bot.add_cog(Productivity(bot))

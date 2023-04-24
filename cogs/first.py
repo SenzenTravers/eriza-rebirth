@@ -17,7 +17,7 @@ class Scraping(commands.Cog):
         msg = await u.lookup(arg)
         await ctx.channel.send(msg)
 
-    @commands.command(aliases=['a'])
+    @commands.command()
     async def appel(self, ctx):
         await ctx.channel.send("Une seconde, j'allume mon minitel...")
         msgs = await u.callForText()
