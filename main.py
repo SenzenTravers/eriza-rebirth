@@ -30,7 +30,7 @@ async def on_message(message):
             answers = [
                 "C'est bien moi :D", ":heart:", ">:3", "... Jésus ?", "Sen coupable"
             ]
-        await message.channel.send(random.choice(answers))
+            await message.channel.send(random.choice(answers))
 
     elif "jesus" in msg or "jésus" in msg:
         await message.channel.send(random.choice(jesus))

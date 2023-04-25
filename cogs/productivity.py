@@ -18,17 +18,21 @@ class Productivity(commands.Cog):
         les nouvelles ?
         """
         # channel = self.bot.get_channel(1100150577708662824)
-        channel = self.bot.get_channel(1059069662127726623)
+        channel = self.bot.get_channel(1100150577708662824)
 
-        msgs = await scrapers.WritingContest.format_contests(by_added=True)
+        get_all_contests = await scrapers.WritingContest.format_contests(by_added=True)
+        get_all_contests = get_all_contests[:10]
+        most_recent_posted = []
 
-        async for message in channel.history(limit=100):
-            if message.content == "boup":
-                pass
+        async for message in channel.history(limit=10):
+            most_recent_posted.append(message.content)
 
+        to_post = set(get_all_contests).difference(most_recent_posted)
+        to_post = [con for con in get_all_contests if con not in most_recent_posted]
+        to_post.reverse()
 
-        #     for msg in msgs:
-        #         await ctx.channel.send(msg)
+        for contest in to_post:
+            await channel.send(contest)
 
     @commands.command(aliases=['a'])
     async def appels(self, ctx):

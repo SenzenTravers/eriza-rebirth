@@ -73,7 +73,7 @@ class WritingContest:
         results = []
 
         for con in contests:
-            con[0] = f"\n🖋 **{con[0].upper()}**"
+            con[0] = f"🖋 **{con[0].upper()}**"
             con[1] = f"**{con[1]}**"
             con[2] = f"*{con[2]}*\n"
             

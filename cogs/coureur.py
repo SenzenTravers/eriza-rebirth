@@ -105,6 +105,7 @@ Vous avez {duration} minutes !""")
 
     def winners_list(self):
         sorted_users = sorted(self.runners.items(), key=lambda item: item[1])
+        sorted_users.reverse()
         cleaned_users = []
 
         for user_results in sorted_users:
