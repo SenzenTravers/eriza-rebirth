@@ -73,7 +73,6 @@ def queenize(texte):
     length = len(texte)- 1
     length = int(length/3)
 
-
     if len(texte.split()) < 7:
         listchoice = ["missingletter", "switchedletter", "toolate"]
         if nbchoice == 1:

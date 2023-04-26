@@ -20,7 +20,10 @@ productivity_text = """
     """
 
 shitpost_text = """
-    `!gojo` *pour recevoir une dose de Gojo.* :warning: ATTENTION : spoiler pour le manga.
+    `!drama` *DUN DUN DUUUUUUN.*
+    `ALIAS : !d`
+
+    `!gojo` *pour recevoir une dose de Gojo.* :warning: ATTENTION : spoilers pour le manga.
     `ALIAS : !g`
 
     `!ouin` *pour recevoir du soutien dans les moments de détresse.*

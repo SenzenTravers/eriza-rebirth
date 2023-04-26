@@ -9,6 +9,10 @@ class Shitpost(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @commands.command(aliases=["d", "D"])
+    async def drama(self, ctx):
+        await ctx.send("https://tenor.com/view/dramatic-chipmunk-gif-19778021")
+
     @commands.command(aliases=['g', 'G'])
     async def gojo(self, ctx):
         user = ctx.message.author
