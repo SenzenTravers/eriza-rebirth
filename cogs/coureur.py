@@ -56,7 +56,7 @@ Vous avez {duration} minutes !""")
                 await asyncio.sleep(120)
                 finished_list = self.winners_list()
                 self.sprint = False
-                self.coureurs = {}
+                self.runners = {}
                 self.enders = {}
 
                 results = "\n:sparkles::sparkles::sparkles: **C'EEEEEEST *FINI***:sparkles::sparkles::sparkles:" + \
@@ -104,12 +104,16 @@ Vous avez {duration} minutes !""")
             await ctx.channel.send(f"{user.name} joint avec {words} mots.")
 
     def winners_list(self):
+        #TODO : sort thanks to a lambda function of self.enders[user_results[0]] - user_results[1]
         sorted_users = sorted(self.runners.items(), key=lambda item: item[1])
         sorted_users.reverse()
         cleaned_users = []
 
+        print(self.runners)
+        print(self.enders)
         for user_results in sorted_users:
             written_words = self.enders[user_results[0]] - user_results[1]
+            print(written_words)
             user_results = list(user_results)
             user_results.append(written_words)
             user_results[1] = self.enders[user_results[0]]
@@ -119,6 +123,7 @@ Vous avez {duration} minutes !""")
                 sorted_users = [
                     f"\n:star2: {item[0].mention}: {item[1]} mots, dont {item[2]} nouveaux !" for item in cleaned_users]
             elif written_words == 0:
+                print("Vraiment ?")
                 sorted_users = [f"\n:star2: {item[0].mention} {random.choice(zero_words)}" for item in cleaned_users]
             else:
                 sorted_users = [f"\n:star2: {item[0].mention} a effacé {written_words} mots." for item in cleaned_users]

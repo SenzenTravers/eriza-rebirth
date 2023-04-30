@@ -22,7 +22,7 @@ class Shitpost(commands.Cog):
     async def ouin(self, ctx):
         await ctx.send(random.choice(laments))
 
-    @commands.command(aliases=['q', 'Q'])
+    @commands.command(aliases=['q', 'Q', 'cielly'])
     async def queenie(self, ctx, *, message=None):
         if message == None:
             message = "Certes, mais que dois-je quueener ?"

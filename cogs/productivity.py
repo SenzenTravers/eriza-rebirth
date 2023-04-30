@@ -18,6 +18,7 @@ class Productivity(commands.Cog):
         les nouvelles ?
         """
         # channel = self.bot.get_channel(1100150577708662824)
+        #TODO : regex, alas, and compare regex
         channel = self.bot.get_channel(1100150577708662824)
 
         get_all_contests = await scrapers.WritingContest.format_contests(by_added=True)
