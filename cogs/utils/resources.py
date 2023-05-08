@@ -70,7 +70,7 @@ sen25 = "Fjkfhskfjsd"
 sen26 = "Je veux manger du sucré........... ;_;"
 sen27 = "*mange des légumes congelés*"
 sen28 = "Et c'est ainsi que j'ai économisé au moins DEUX EUROS !!!"
-sen29 = ":zn:"
+sen29 = "Oh Non Le Sprint"
 sen30 = "Tarte au citron........."
 sen31 = "CHOCOLAT <3"
 sen32 = "Oui, je vendrais père et mère pour de la Haagen Däasz mais en ma défense, je n'ai aucune excuse"
@@ -114,7 +114,7 @@ lament30 = "):"
 lament31 = "Wow...."
 
 ############## LISTE
-desapprobation = [":zn:", ":offense:",
+desapprobation = [
             "INÉDIT : une majorité des Français ne voteraient pas pour Sen aux présidentielles 2024",
             ">: (", "Sen a tort", "Beurk, une Sen", "*Sen slander*",
             "Eh bien JE DÉSAPPROUVE", ":black_heart:"]

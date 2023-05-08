@@ -55,6 +55,8 @@ class WritingContest:
             cat = unicodedata.normalize("NFKD", cat.get_text(strip=True))
             if (r"Frais d'inscription" in cat) and r":0 €" not in cat:
                 break
+            if r"Ajouté :" in cat:
+                continue
             else:
                 results.append(cat)
             

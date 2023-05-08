@@ -22,12 +22,20 @@ class Shitpost(commands.Cog):
     async def ouin(self, ctx):
         await ctx.send(random.choice(laments))
 
-    @commands.command(aliases=['q', 'Q', 'cielly'])
+    @commands.command(aliases=['q', 'Q'])
     async def queenie(self, ctx, *, message=None):
         if message == None:
             message = "Certes, mais que dois-je quueener ?"
         else:
             message = f"Ainsi parla Queenie : {queenize(message)}"
+        await ctx.send(message)
+
+    @commands.command()
+    async def cielly(self, ctx, *, message=None):
+        if message == None:
+            message = "Certes, mais que dois-je cieller ?"
+        else:
+            message = f"Ainsi parla Cielly : {queenize(message)}"
         await ctx.send(message)
 
     @commands.command()
