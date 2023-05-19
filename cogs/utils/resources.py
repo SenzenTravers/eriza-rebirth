@@ -40,6 +40,12 @@ gojo38 = "https://mykombini-ab5a.kxcdn.com/147225-thickbox/look-up-jujutsu-kaise
 gojo39 = "https://static0.cbrimages.com/wordpress/wp-content/uploads/2021/05/gojo-satoru-featured.jpg"
 gojo40 = "https://twitter.com/tiyu0710/status/1650164980204072961"
 gojo41 = "https://twitter.com/3110_jj/status/1650164528548827137/photo/1"
+gojo42 = "https://twitter.com/bombyoon/status/1635632905027297282"
+gojo43 = "https://twitter.com/K_menono/status/1641983211982188547/photo/1"
+gojo44 = "https://twitter.com/pupiro__5/status/1646855030681776128/photo/1"
+gojo45 = "https://twitter.com/bunbu_juju/status/1656258127703207936"
+gojo46 = "https://twitter.com/aimaimath/status/1658125541990342658"
+gojo47 = "https://twitter.com/maso_wo/status/1657883477147291648"
 
 # SEN
 sen1 = "*oublie la conversation*"
@@ -71,14 +77,12 @@ sen26 = "Je veux manger du sucré........... ;_;"
 sen27 = "*mange des légumes congelés*"
 sen28 = "Et c'est ainsi que j'ai économisé au moins DEUX EUROS !!!"
 sen29 = "Oh Non Le Sprint"
-sen30 = "Tarte au citron........."
-sen31 = "CHOCOLAT <3"
+sen30 = "https://tenor.com/view/pig-brushed-gif-21242185"
+sen31 = "*vante les mérites des cochons*"
 sen32 = "Oui, je vendrais père et mère pour de la Haagen Däasz mais en ma défense, je n'ai aucune excuse"
 sen33 = "*se brûle bêtement*"
 sen34 = "*échoue à allumer à un feu*"
 sen35 = "*se brûle en échouant à allumer un feu*"
-sen36 = "I <3 les cochons (l'animal)"
-sen37 = "https://tenor.com/view/pig-brushed-gif-21242185"
 
 # LAMENTS
 lament1 = "Ah ouais, quand même..."
@@ -123,7 +127,7 @@ gojo = [gojo1, gojo2, gojo3, gojo4, gojo5, gojo6, gojo7, gojo8, gojo9, gojo10,
     gojo11, gojo12, gojo13, gojo14, gojo15, gojo16, gojo17, gojo18, gojo19,
     gojo20, gojo21, gojo22, gojo23, gojo24, gojo25, gojo26, gojo27, gojo28, gojo29,
     gojo30, gojo31, gojo32, gojo33, gojo34, gojo35, gojo36, gojo37, gojo38, gojo39,
-    gojo40, gojo41]
+    gojo40, gojo41, gojo42, gojo43, gojo44, gojo45, gojo46, gojo47]
 
 jesus = ["JÉSUS !!!", "https://tenor.com/view/jesus-christ-wink-smile-jesus-gif-15483760",
             "JÉSUS :D :D :D", "*murmure* Jésus.....", "... Jésus ?", "Jésus ewe",
@@ -136,7 +140,7 @@ jesus = ["JÉSUS !!!", "https://tenor.com/view/jesus-christ-wink-smile-jesus-gif
 sensim = [sen1, sen2, sen3, sen4, sen5, sen6, sen7, sen8, sen9, sen10, sen11,
     sen12, sen13, sen14, sen15, sen16, sen17, sen18, sen19, sen20, sen21, sen22,
     sen23, sen24, sen25, sen26, sen27, sen28, sen29, sen30, sen31, sen32, sen33,
-    sen34, sen35, sen36, sen37]
+    sen34, sen35]
 
 laments = [
     lament1, lament2, lament3, lament4, lament5, lament6, lament7, lament8, lament9,
