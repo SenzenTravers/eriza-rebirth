@@ -3,13 +3,39 @@ import datetime as dt
 import random
 
 import discord
-from discord.ext import commands
+import pytz
+from discord.ext import commands, tasks
 
 from .utils import scrapers
+
+# timezone = pytz.timezone('Europe/Paris')
+ze_hour = dt.time(hour=20, minute=52)
+
 
 class Productivity(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.post_contests.start()
+
+
+    @tasks.loop(time=ze_hour)
+    async def post_contests(self):
+        channel = self.bot.get_channel(1100150577708662824)
+
+        get_all_contests = await scrapers.WritingContest.format_contests(by_added=True)
+        get_all_contests = get_all_contests[:10]
+        most_recent_posted = []
+
+        async for message in channel.history(limit=10):
+            most_recent_posted.append(message.content)
+
+        to_post = set(get_all_contests).difference(most_recent_posted)
+        to_post = [con for con in get_all_contests if con not in most_recent_posted]
+        to_post.reverse()
+
+        for contest in to_post:
+            await channel.send(contest)
+
 
     @commands.command(aliases=['na'])
     async def new_appels(self, ctx):
@@ -17,8 +43,6 @@ class Productivity(commands.Cog):
         Commande admin ? Ou, plutôt, le bot devrait-il poster automatiquement
         les nouvelles ?
         """
-        # channel = self.bot.get_channel(1100150577708662824)
-        #TODO : regex, alas, and compare regex
         channel = self.bot.get_channel(1100150577708662824)
 
         get_all_contests = await scrapers.WritingContest.format_contests(by_added=True)

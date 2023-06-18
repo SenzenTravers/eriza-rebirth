@@ -46,6 +46,11 @@ gojo44 = "https://twitter.com/pupiro__5/status/1646855030681776128/photo/1"
 gojo45 = "https://twitter.com/bunbu_juju/status/1656258127703207936"
 gojo46 = "https://twitter.com/aimaimath/status/1658125541990342658"
 gojo47 = "https://twitter.com/maso_wo/status/1657883477147291648"
+gojo48 = "https://twitter.com/dmsco1803/status/1660311550396354561"
+gojo49 = "https://twitter.com/uniki_niki_niki/status/1658776356086501377"
+gojo50 = "https://twitter.com/yamada_souko/status/1661814829802487808"
+gojo51 = "https://twitter.com/yamadasouko/status/1661057811303002113"
+gojo52 = "https://twitter.com/yamada_souko/status/1641504545095438337"
 
 # SEN
 sen1 = "*oublie la conversation*"
@@ -127,7 +132,8 @@ gojo = [gojo1, gojo2, gojo3, gojo4, gojo5, gojo6, gojo7, gojo8, gojo9, gojo10,
     gojo11, gojo12, gojo13, gojo14, gojo15, gojo16, gojo17, gojo18, gojo19,
     gojo20, gojo21, gojo22, gojo23, gojo24, gojo25, gojo26, gojo27, gojo28, gojo29,
     gojo30, gojo31, gojo32, gojo33, gojo34, gojo35, gojo36, gojo37, gojo38, gojo39,
-    gojo40, gojo41, gojo42, gojo43, gojo44, gojo45, gojo46, gojo47]
+    gojo40, gojo41, gojo42, gojo43, gojo44, gojo45, gojo46, gojo47, gojo48, gojo49,
+    gojo50, gojo51, gojo52]
 
 jesus = ["JÉSUS !!!", "https://tenor.com/view/jesus-christ-wink-smile-jesus-gif-15483760",
             "JÉSUS :D :D :D", "*murmure* Jésus.....", "... Jésus ?", "Jésus ewe",

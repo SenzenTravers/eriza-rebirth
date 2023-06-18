@@ -64,7 +64,7 @@ sprint_alone6 = "Bon travail, Spleen !"
 #### SPRINT ANNULÉ
 sprint_cancelled1 = "La course est annulée, et moi offensée >=("
 sprint_cancelled2 = "La course est annulée. C'était bien la peine de me déranger :zn:"
-sprint_cancelled3 = ":offense: Course annulée."
+sprint_cancelled3 = "Course annulée. Pff."
 sprint_cancelled4 = "Quelqu'un s'est foiré en tapant la commande, hein ? Course annulée."
 sprint_cancelled5 = "La course est annulée, mais je ne le prends pas personnellement :smile:"
 
