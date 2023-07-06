@@ -44,4 +44,5 @@ async def on_message(message):
             await message.channel.send(random.choice(desapprobation))
 
 client_secret = config("client_secret")
+
 bot.run(client_secret)

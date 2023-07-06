@@ -1,3 +1,20 @@
+# DIMITRI
+dimitri1 = "https://twitter.com/Lynnn28208524/status/1672719260102311936?t=DHO4TGZDMeAjmzNSdnOLKg&s=19"
+dimitri2 = "https://media.discordapp.net/attachments/778026188894371850/1122200492383154217/dmcl3.jpg?width=617&height=617"
+dimitri3 = "https://media.discordapp.net/attachments/778026188894371850/1122200492102144071/bBAY.jpg"
+dimitri4 = "https://media.discordapp.net/attachments/778026188894371850/1122200491846275292/dimiiii.jpg?width=369&height=617"
+dimitri5 = "https://media.discordapp.net/attachments/778026188894371850/1122200491561070643/dimitri7.jpg?width=444&height=617"
+dimitri6 = "https://media.discordapp.net/attachments/778026188894371850/1122189858576814190/dmcl2.jpg?width=520&height=617"
+dimitri7 = "https://media.discordapp.net/attachments/778026188894371850/1122189858325135390/dmcl1.jpg?width=587&height=617"
+dimitri8 = "https://media.discordapp.net/attachments/778026188894371850/1122189857960239165/dimitri6.jpg?width=206&height=617"
+dimitri9 = "https://media.discordapp.net/attachments/778026188894371850/1122189857683427428/dimitri5.jpg?width=493&height=617"
+dimitri10 = "https://media.discordapp.net/attachments/778026188894371850/1122189857469497364/dimitri4.jpg?width=438&height=617"
+dimitri11 = "https://media.discordapp.net/attachments/778026188894371850/1122188728882958466/dimitri2.jpg?width=632&height=617"
+dimitri12 = "https://media.discordapp.net/attachments/778026188894371850/1122188729210110002/dimiangry-1.png?width=781&height=617"
+dimitri13 = "https://media.discordapp.net/attachments/778026188894371850/1122188729960894524/dimitri3.jpg"
+dimitri14 = "https://media.discordapp.net/attachments/778026188894371850/1122188204133584966/dimitri1.jpg?width=797&height=448"
+dimitri15 = "https://vxtwitter.com/sevenney/status/1675462601017552896?s=20"
+
 # GOJO
 gojo1 = "https://tenor.com/view/gojo-satoru-jujutsu-kaisen-gif-19354838"
 gojo2 = "https://tenor.com/view/gojo-jujutsu-kaisen-jjk-satoru-gojo-gojou-gif-20813277"
@@ -128,6 +145,9 @@ desapprobation = [
             ">: (", "Sen a tort", "Beurk, une Sen", "*Sen slander*",
             "Eh bien JE DÉSAPPROUVE", ":black_heart:"]
 
+dimitri = [dimitri1, dimitri2, dimitri3, dimitri4, dimitri5, dimitri6, dimitri7,
+           dimitri8, dimitri9, dimitri10, dimitri11, dimitri12, dimitri13,
+           dimitri14, dimitri15]
 gojo = [gojo1, gojo2, gojo3, gojo4, gojo5, gojo6, gojo7, gojo8, gojo9, gojo10,
     gojo11, gojo12, gojo13, gojo14, gojo15, gojo16, gojo17, gojo18, gojo19,
     gojo20, gojo21, gojo22, gojo23, gojo24, gojo25, gojo26, gojo27, gojo28, gojo29,

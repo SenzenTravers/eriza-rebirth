@@ -3,12 +3,11 @@ import datetime as dt
 import random
 
 import discord
-import pytz
+
 from discord.ext import commands, tasks
 
 from .utils import scrapers
 
-# timezone = pytz.timezone('Europe/Paris')
 ze_hour = dt.time(hour=20, minute=52)
 
 

@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 
 from .utils.shitpost import *
-from .utils.resources import gojo, laments, sensim
+from .utils.resources import dimitri, gojo, laments, sensim
 
 
 class Shitpost(commands.Cog):
@@ -12,6 +12,11 @@ class Shitpost(commands.Cog):
     @commands.command(aliases=["d", "D"])
     async def drama(self, ctx):
         await ctx.send("https://tenor.com/view/dramatic-chipmunk-gif-19778021")
+
+    @commands.command()
+    async def dimitri(self, ctx):
+        user = ctx.message.author
+        await user.send(random.choice(dimitri))
 
     @commands.command(aliases=['g', 'G'])
     async def gojo(self, ctx):
