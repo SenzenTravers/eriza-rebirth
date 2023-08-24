@@ -14,6 +14,37 @@ dimitri12 = "https://media.discordapp.net/attachments/778026188894371850/1122188
 dimitri13 = "https://media.discordapp.net/attachments/778026188894371850/1122188729960894524/dimitri3.jpg"
 dimitri14 = "https://media.discordapp.net/attachments/778026188894371850/1122188204133584966/dimitri1.jpg?width=797&height=448"
 dimitri15 = "https://vxtwitter.com/sevenney/status/1675462601017552896?s=20"
+dimitri16 = "https://cdn.discordapp.com/attachments/701451820081610813/1139825893473271808/20200328_dimitri_theyscream_big01.png"
+dimitri17 = "https://cdn.discordapp.com/attachments/701451820081610813/1139822593860448316/20220712_162728.jpg"
+dimitri18 = "https://twitter.com/enononono6/status/1690118958412959748/photo/1"
+dimitri19 = "https://pbs.twimg.com/media/FCdkpvDUYAMDwEm?format=jpg&name=large"
+dimitri20 = "https://twitter.com/SBixinsKy/status/1291937305498812416/photo/1"
+dimitri21 = "https://twitter.com/SBixinsKy/status/1291937305498812416/photo/2"
+dimitri22 = "https://twitter.com/___hg6/status/1688199665089716224/photo/1"
+dimitri23 = "https://media.discordapp.net/attachments/778026188894371850/1143516833887043584/20230822_140326.jpg?width=405&height=606"
+dimitri24 = "https://media.discordapp.net/attachments/778026188894371850/1143516834218385439/20230822_140321.jpg?width=376&height=606"
+dimitri25 = "https://media.discordapp.net/attachments/778026188894371850/1143516834566520872/20230822_140316.jpg?width=409&height=605"
+dimitri26 = "https://cdn.discordapp.com/attachments/778026188894371850/1141408453424840804/20230816_182923.jpg"
+dimitri27 = "https://twitter.com/Rinv_krs/status/1172117677764034560?t=bsWelC425tZNqqx_oQuvug&s=19"
+
+
+# GETO
+geto1 = "https://pbs.twimg.com/media/F3U_tN8aUAET54C?format=jpg&name=4096x4096"
+geto2 = "https://pbs.twimg.com/media/F3LmyH7aAAAeGHa?format=jpg&name=4096x4096"
+geto3 = "https://pbs.twimg.com/media/F4OK_mZXgAAa84n?format=jpg&name=medium"
+geto4 = "https://pbs.twimg.com/media/F4OK_mUXAAAyJlM?format=jpg&name=900x900"
+geto5 = "https://twitter.com/kentobreads/status/1692933014236303449/photo/1"
+geto5 = "https://pbs.twimg.com/media/F3rWrtrWwAAd9CM?format=jpg&name=medium"
+geto6 = "https://twitter.com/ya_abby4/status/1678670194305306624/photo/1"
+geto7 = "https://twitter.com/ya_abby4/status/1667775865479114752/photo/1"
+geto8 = "https://twitter.com/ya_abby4/status/1489173668198432769/photo/1"
+geto9 = "https://twitter.com/ya_abby4/status/1485879090548592641/photo/1"
+geto10 = "https://pbs.twimg.com/media/FHozqYbVgAE8n5b?format=jpg&name=large"
+geto11 = "https://twitter.com/ya_abby4/status/1376373948254851084/photo/1"
+geto12 = "https://twitter.com/ya_abby4/status/1346755991975522304/photo/1"
+geto13 = "https://twitter.com/sachi_1203/status/1693610810621497663?s=20"
+geto14 = "https://twitter.com/six_richman/status/1431833847629377538/photo/1"
+geto15 = "https://twitter.com/six_richman/status/1396162912142561282/photo/1"
 
 # GOJO
 gojo1 = "https://tenor.com/view/gojo-satoru-jujutsu-kaisen-gif-19354838"
@@ -78,6 +109,17 @@ gojo59 = "https://twitter.com/aoi0608/status/1684608110370136064"
 gojo60 = "https://twitter.com/PD_HONEY/status/1684764923954655232"
 gojo61 = "https://twitter.com/RodysanP/status/1684642476190228482"
 gojo62 = "https://twitter.com/ndsoda/status/1684584704757100544"
+gojo63 = "https://cdn.discordapp.com/attachments/778026188894371850/1138103557313273956/20220405_213806.jpg"
+gojo64 = "https://cdn.discordapp.com/attachments/778026188894371850/1138103221081096192/20230807_114816.jpg"
+gojo65 = "https://pbs.twimg.com/media/F3LmwlgaoAAKvO-?format=jpg&name=4096x4096"
+gojo66 = "https://twitter.com/artofzolaida/status/1693972093115765172?s=20"
+gojo67 = "https://cdn.discordapp.com/attachments/778026188894371850/1141135103133749388/Tumblr_l_2347216001454058.jpg"
+gojo68 = "https://cdn.discordapp.com/attachments/778026188894371850/1140398372373680238/20230813_233105.jpg"
+gojo69 = "https://twitter.com/six_richman/status/1649361613848457217/photo/2"
+gojo70 = "https://twitter.com/six_richman/status/1468192364737220612/photo/1"
+gojo71 = "https://twitter.com/six_richman/status/1424010247715233796/photo/1"
+gojo72 = "https://twitter.com/six_richman/status/1388382925977120771/photo/1"
+gojo73 = "https://twitter.com/six_richman/status/1388382925977120771/photo/2"
 
 # SEN
 sen1 = "*oublie la conversation*"
@@ -157,14 +199,18 @@ desapprobation = [
 
 dimitri = [dimitri1, dimitri2, dimitri3, dimitri4, dimitri5, dimitri6, dimitri7,
            dimitri8, dimitri9, dimitri10, dimitri11, dimitri12, dimitri13,
-           dimitri14, dimitri15]
+           dimitri14, dimitri15, dimitri16, dimitri17, dimitri18, dimitri19,
+           dimitri20, dimitri21, dimitri22, dimitri23, dimitri24, dimitri25,
+           dimitri26, dimitri27]
+geto = [geto1, geto2, geto3, geto4, geto5, geto6, geto7, geto8, geto9, geto10,
+        geto11, geto12, geto13]
 gojo = [gojo1, gojo2, gojo3, gojo4, gojo5, gojo6, gojo7, gojo8, gojo9, gojo10,
     gojo11, gojo12, gojo13, gojo14, gojo15, gojo16, gojo17, gojo18, gojo19,
     gojo20, gojo21, gojo22, gojo23, gojo24, gojo25, gojo26, gojo27, gojo28, gojo29,
     gojo30, gojo31, gojo32, gojo33, gojo34, gojo35, gojo36, gojo37, gojo38, gojo39,
     gojo40, gojo41, gojo42, gojo43, gojo44, gojo45, gojo46, gojo47, gojo48, gojo49,
     gojo50, gojo51, gojo52, gojo53, gojo54, gojo55, gojo56, gojo57, gojo58, gojo59,
-    gojo60, gojo61, gojo62,]
+    gojo60, gojo61, gojo62, gojo63, gojo64, gojo65, gojo66, gojo67, gojo68]
 
 jesus = ["JÉSUS !!!", "https://tenor.com/view/jesus-christ-wink-smile-jesus-gif-15483760",
             "JÉSUS :D :D :D", "*murmure* Jésus.....", "... Jésus ?", "Jésus ewe",

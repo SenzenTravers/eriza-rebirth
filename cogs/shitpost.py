@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 
 from .utils.shitpost import *
-from .utils.resources import dimitri, gojo, laments, sensim
+from .utils.resources import dimitri, geto, gojo, laments, sensim
 
 
 class Shitpost(commands.Cog):
@@ -17,6 +17,11 @@ class Shitpost(commands.Cog):
     async def dimitri(self, ctx):
         user = ctx.message.author
         await user.send(random.choice(dimitri))
+
+    @commands.command()
+    async def geto(self, ctx):
+        user = ctx.message.author
+        await user.send(random.choice(geto))
 
     @commands.command(aliases=['g', 'G'])
     async def gojo(self, ctx):

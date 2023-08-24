@@ -6,7 +6,7 @@ import discord
 
 from discord.ext import commands, tasks
 
-from .utils import scrapers
+from .utils import scrapers, avis
 
 ze_hour = dt.time(hour=20, minute=52)
 
@@ -38,10 +38,6 @@ class Productivity(commands.Cog):
 
     @commands.command(aliases=['na'])
     async def new_appels(self, ctx):
-        """
-        Commande admin ? Ou, plutôt, le bot devrait-il poster automatiquement
-        les nouvelles ?
-        """
         channel = self.bot.get_channel(1100150577708662824)
 
         get_all_contests = await scrapers.WritingContest.format_contests(by_added=True)
@@ -58,7 +54,7 @@ class Productivity(commands.Cog):
         for contest in to_post:
             await channel.send(contest)
 
-    @commands.command(aliases=['a'])
+    @commands.command()
     async def appels(self, ctx):
         """
         Envoie par MP les appels à texte classés par deadline
@@ -73,6 +69,24 @@ class Productivity(commands.Cog):
             for contest in contests:
                 user = ctx.message.author
                 await user.send(contest)
+
+    @commands.command(aliases=['a'])
+    async def avis(self, ctx, *arg):
+        """
+        Permet de donner un avis sur un bouquin
+        """
+        if not arg:
+            answer = "Tenter de recommander le rien... Très post-moderne."
+            await ctx.channel.send(answer)
+
+        elif "INDÉ:" not in arg and \
+            "INDE:" not in arg and len(arg) <= 2:
+            await ctx.channel.send("Merci de préciser un titre ET un auteur.")
+        else:
+            lookuper = avis.BookSifter()
+            rec = await lookuper.look_up(arg)
+            await ctx.channel.send(rec)
+
 
     # @commands.command(aliases=['r'])
     # async def rare(self, ctx):
@@ -94,11 +108,6 @@ class Productivity(commands.Cog):
     #         await ctx.channel.send("Le mot du jour est...")
     #         await ctx.channel.send(msg)
     #         await asyncio.sleep(a_day)
-
-    # @commands.command(aliases=['grou'])
-    # async def gro(self, ctx):
-    #     await ctx.channel.send("QUE LA CULTURE COMMENCE")
-    #     await ctx.channel.send(await u.rare_word())
 
 async def setup(bot):
     await bot.add_cog(Productivity(bot))
