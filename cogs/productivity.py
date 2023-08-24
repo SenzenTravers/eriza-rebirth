@@ -85,7 +85,17 @@ class Productivity(commands.Cog):
         else:
             lookuper = avis.BookSifter()
             rec = await lookuper.look_up(arg)
-            await ctx.channel.send(rec)
+
+            if type(rec) == str:
+                await ctx.channel.send(rec)
+            else:
+                if len(rec["authors"]) == 1:
+                    msg = f"**{rec['title']}**, par {rec['authors']}\n{rec['link']}"
+                else:
+                    authors = await lookuper.deal_with_authors(rec["authors"])
+                    msg = f"**{rec['title']}**, par {authors}\n{rec['link']}"
+
+                await ctx.channel.send(msg)
 
 
     # @commands.command(aliases=['r'])

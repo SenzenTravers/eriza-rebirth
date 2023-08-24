@@ -6,6 +6,9 @@ from bs4 import BeautifulSoup as bs
 
 class BookSifter:
     async def return_json(self, lookup):
+        if "indé:" in lookup.lower() or "inde:" in lookup.lower():
+            lookup_url = f"https://www.googleapis.com/books/v1/volumes?q={lookup[5:]}"
+
         lookup_url = f"https://www.googleapis.com/books/v1/volumes?q={lookup}"
         
         async with aiohttp.ClientSession() as session:
@@ -31,13 +34,6 @@ class BookSifter:
             "link": book_info["canonicalVolumeLink"],
         }
 
-        try:
-            book_dict.update(
-                {"cover": book_info["imageLinks"]["smallThumbnail"]}
-            )
-        except KeyError:
-            pass
-
         return book_dict
     
     def deal_with_args(self, args):
@@ -51,3 +47,19 @@ class BookSifter:
             word not in ("par", "INDE", "INDÉ")]
         
         return "+".join(new_list)
+    
+    async def deal_with_authors(self, author_list):
+        next_to_last = len(author_list) - 1
+        result = ""
+        i = 0
+        
+        for item in author_list:
+            i += 1
+            if i < next_to_last:
+                result += f"{item}, "
+            elif i == next_to_last:
+                result += f"{item} et "
+            else:
+                result += item
+
+        return result
