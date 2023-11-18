@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 
 from .utils.shitpost import *
-from .utils.resources import dimitri, geto, gojo, laments, sensim
+from .utils.resources import dimitri, gego, geto, gojo, laments, nanami, sensim
 
 
 class Shitpost(commands.Cog):
@@ -19,6 +19,20 @@ class Shitpost(commands.Cog):
         await user.send(random.choice(dimitri))
 
     @commands.command()
+    async def fic(self, ctx, *, message=None):
+        if message == None:
+            message = "Filez-moi un pairing à ficcer, mécréant !"
+        else:
+            message = fanfic_it(message)
+
+        await ctx.send(message)
+
+    @commands.command()
+    async def gego(self, ctx):
+        user = ctx.message.author
+        await user.send(random.choice(gego))
+
+    @commands.command()
     async def geto(self, ctx):
         user = ctx.message.author
         await user.send(random.choice(geto))
@@ -27,6 +41,11 @@ class Shitpost(commands.Cog):
     async def gojo(self, ctx):
         user = ctx.message.author
         await user.send(random.choice(gojo))
+
+    @commands.command()
+    async def nanami(self, ctx):
+        user = ctx.message.author
+        await user.send(random.choice(nanami))
 
     @commands.command(aliases=['o', 'O'])
     async def ouin(self, ctx):

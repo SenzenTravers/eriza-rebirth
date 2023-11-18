@@ -33,7 +33,6 @@ class Config(commands.Cog):
                                 inline=False
                             )
                         except Exception as e:
-                            print(e)
                             embed.add_field(
                                 name=f"Failed to reload: `{ext}`",
                                 value=e,

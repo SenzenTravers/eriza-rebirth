@@ -19,6 +19,39 @@ async def scrape(url, func):
             return result
 
 
+class DictionaryThings:
+    @staticmethod
+    async def return_word(soup):
+        if "Cette forme est introuvable !" in soup:
+            return False
+        
+        word_title = soup.find(id="vitemselected")
+        word_title = word_title.text
+        word_defs = soup.find_all("span", "tlf_cdefinition")
+        word_defs = [definition.text for definition in word_defs]
+
+        return (word_title, word_defs)
+
+    @staticmethod
+    async def get_word(word):
+        url = f"https://www.cnrtl.fr/definition/{word}"
+        word_definition = await scrape(url, DictionaryThings.return_word)
+        
+        if word_definition == False:
+            return False
+        else:
+            results = await DictionaryThings.format_result(word_definition, url)
+            return results
+
+    @staticmethod
+    async def format_result(word_definition, url):
+        title = f"**{word_definition[0]}**\n"
+        defs = "\n\n".join(word_definition[1])
+        url = f"\n\n**En savoir plus** : {url}"
+
+        return title + defs + url
+
+    
 class WritingContest:
     @staticmethod
     async def return_all_contests(soup):

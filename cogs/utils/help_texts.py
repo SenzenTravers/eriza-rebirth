@@ -15,16 +15,34 @@ coureur_text = """
     """
 
 productivity_text = """
-    `!appels` *pour recevoir par MP une liste d'appels à texte listés par date de rendu.
+    `!ajoutermot` *pour ajouter un mot rare que vous aimez.*
+    `ALIAS : !am`
+    `FORMAT : !am motrare`
+
+    `!appels` *pour recevoir par MP une liste d'appels à texte listés par date de rendu.*
     `ALIAS : !a`
+
+    `!commenter` *pour donner un avis sur un bouquin.*
+    `ALIAS : !co`
+    `FORMAT : !co De bons présages`
+    
+    `!voiravis` *pour voir les avis sur un bouquin.*
+    `ALIAS : !va`
+    `FORMAT : !va De bons présages`
     """
 
 shitpost_text = """
     `!drama` *DUN DUN DUUUUUUN.*
     `ALIAS : !d`
 
+    `!geto` *pour recevoir une dose de Geto.*
+
+    `!gego` *pour recevoir une dose de Geto/Gojo.*
+    
     `!gojo` *pour recevoir une dose de Gojo.* :warning: ATTENTION : spoilers pour le manga.
     `ALIAS : !g`
+
+    `!nanami` *pour recevoir une dose de Nanami.*
 
     `!ouin` *pour recevoir du soutien dans les moments de détresse.*
     `ALIAS : !o`

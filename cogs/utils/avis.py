@@ -5,16 +5,19 @@ import unicodedata
 from bs4 import BeautifulSoup as bs
 
 class BookSifter:
-    async def return_json(self, lookup):
+    async def return_json(self, lookup, is_url=False):
         if "indé:" in lookup.lower() or "inde:" in lookup.lower():
             lookup_url = f"https://www.googleapis.com/books/v1/volumes?q={lookup[5:]}"
 
         lookup_url = f"https://www.googleapis.com/books/v1/volumes?q={lookup}"
+
+        if is_url:
+            lookup_url = lookup
         
         async with aiohttp.ClientSession() as session:
             async with session.get(lookup_url) as response:
                 return await response.json()
-            
+
     async def look_up(self, lookup):
         args = self.deal_with_args(lookup)
         try:

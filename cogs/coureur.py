@@ -109,11 +109,8 @@ Vous avez {duration} minutes !""")
         sorted_users.reverse()
         cleaned_users = []
 
-        print(self.runners)
-        print(self.enders)
         for user_results in sorted_users:
             written_words = self.enders[user_results[0]] - user_results[1]
-            print(written_words)
             user_results = list(user_results)
             user_results.append(written_words)
             user_results[1] = self.enders[user_results[0]]

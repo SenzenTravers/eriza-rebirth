@@ -1,5 +1,7 @@
 import random
 
+from .fic_ressources import *
+
 ####################### QUEENIE
 def word_remove(string):
     string = string.split()
@@ -123,3 +125,41 @@ def queenize(texte):
 
 
     return final
+
+################ FANFIC IT
+def fanfic_it(text):
+    text = text.split(",")
+    genrenb = random.randint(1, 2)
+    warning = random.randint(1, 3)
+    clichenb = random.randint(1, 2)
+
+    if genrenb == 1:
+        genre_final = random.choice(genre)
+    else:
+        genre1 = random.choice(genre)
+        genre2 = random.choice(genre)
+        while genre1 == genre2:
+            genre2 = random.choice(genre)
+        genre_final = f"{genre1} et {genre2}"
+    if clichenb == 1:
+        cliche_fic = f"Elle contient l'archétype suivant : {random.choice(cliche)}"
+    else:
+        cliche_fic = "Elle ne contient aucun archétype particulier."
+
+    if warning < 3:
+        warning = "et ne nécessite aucun avertissement quant à son contenu."
+    else:
+        warning = f"et nécessite un avertissement pour le contenu suivant : {random.choice(warning)}"
+
+    if len(text) == 2:
+        pairingz = f"{text[0]} et {text[1].strip()}"
+    else:
+        pairingz = f"{text[0]}, {text[1].strip()} et {text[2].strip()}"
+
+    result = f"""Mon algorythme a déterminé la fic optimale à écrire pour {pairingz} !
+Elle est de genre {genre_final} {warning}.
+{cliche_fic}
+Sa longueur est {random.choice(longueur)}.
+L'écrire{random.choice(whywrite)}."""
+
+    return result
