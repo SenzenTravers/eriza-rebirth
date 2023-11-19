@@ -22,7 +22,7 @@ async def scrape(url, func):
 class DictionaryThings:
     @staticmethod
     async def return_word(soup):
-        if "Cette forme est introuvable !" in soup:
+        if "Cette forme est introuvable" in soup:
             return False
         
         word_title = soup.find(id="vitemselected")
@@ -41,6 +41,11 @@ class DictionaryThings:
             return False
         else:
             results = await DictionaryThings.format_result(word_definition, url)
+            
+            if len(results) > 1700:
+                redirect_to = f"\nCoupé pour cause de longueur ! Pour lire le reste : {url}"
+                results = results[:1000] + redirect_to
+
             return results
 
     @staticmethod

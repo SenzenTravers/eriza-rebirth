@@ -6,10 +6,12 @@ import discord
 
 from discord.ext import commands, tasks
 
+# from .utils import avis, scrapers
+# LUCILE, N'OUBLIE PAS
 from .utils import avis, db, scrapers
 
 contest_time = dt.time(hour=19, minute=00)
-word_time = dt.time(hour=19, minute=35)
+word_time = dt.time(hour=21, minute=4)
 
 
 class Productivity(commands.Cog):
@@ -81,97 +83,99 @@ class Productivity(commands.Cog):
                 user = ctx.message.author
                 await user.send(contest)
 
-    @commands.command(aliases=['co'])
-    async def commenter(self, ctx, *arg):
-        """
-        Permet de donner un avis sur un bouquin
-        """
-        def answer(msg):
-            if msg.channel == ctx.channel and msg.author == ctx.author:
-                return msg.content.lower() in ("oui", "o", "non", "b")
+    # LOUCIL
+    # @commands.command(aliases=['co'])
+    # async def commenter(self, ctx, *arg):
+    #     """
+    #     Permet de donner un avis sur un bouquin
+    #     """
+    #     def answer(msg):
+    #         if msg.channel == ctx.channel and msg.author == ctx.author:
+    #             return msg.content.lower() in ("oui", "o", "non", "b")
 
-        def get_opinion(msg):
-            return msg.channel == ctx.channel and msg.author == ctx.author and msg.content.startswith("=")
+    #     def get_opinion(msg):
+    #         return msg.channel == ctx.channel and msg.author == ctx.author and msg.content.startswith("=")
 
-        book = await self.handle_avis(ctx, arg)
+    #     book = await self.handle_avis(ctx, arg)
 
-        if not book:
-            ctx.send("Désolée ; cet ouvrage est le fruit de votre imagination échevelée.")
+    #     if not book:
+    #         ctx.send("Désolée ; cet ouvrage est le fruit de votre imagination échevelée.")
 
-        try:
-            await ctx.send("Voulez-vous écrire un avis sur ce livre ? (O/Oui/N/Non)")
-            check_answer = await self.bot.wait_for('message', check=answer, timeout = 60.0)
+    #     try:
+    #         await ctx.send("Voulez-vous écrire un avis sur ce livre ? (O/Oui/N/Non)")
+    #         check_answer = await self.bot.wait_for('message', check=answer, timeout = 60.0)
 
-            if check_answer.content.lower() in ("oui", "o"):
-                try:
-                    is_rec = False
-                    await ctx.send("Veuillez maintenant écrire votre avis en le préfixant par =")
-                    wait_opinion = await self.bot.wait_for(
-                        'message',
-                        check=get_opinion,
-                        timeout = 60.0
-                        )
+    #         if check_answer.content.lower() in ("oui", "o"):
+    #             try:
+    #                 is_rec = False
+    #                 await ctx.send("Veuillez maintenant écrire votre avis en le préfixant par =")
+    #                 wait_opinion = await self.bot.wait_for(
+    #                     'message',
+    #                     check=get_opinion,
+    #                     timeout = 60.0
+    #                     )
                     
-                    await ctx.send("Est-ce une rec ? (o/oui, n/non)")
-                    wait_rec = await self.bot.wait_for(
-                            'message',
-                            check=answer,
-                            timeout = 30.0
-                            )
+    #                 await ctx.send("Est-ce une rec ? (o/oui, n/non)")
+    #                 wait_rec = await self.bot.wait_for(
+    #                         'message',
+    #                         check=answer,
+    #                         timeout = 30.0
+    #                         )
 
-                    if wait_rec.content.lower() in ("o", "oui"):
-                        is_rec = True
+    #                 if wait_rec.content.lower() in ("o", "oui"):
+    #                     is_rec = True
 
-                    db_handler = db.DBHandler()
-                    try:
-                        await db_handler.insert_into_table("books", [book["link"]])
-                    except:
-                        pass
+    #                 db_handler = db.DBHandler()
+    #                 try:
+    #                     await db_handler.insert_into_table("books", [book["link"]])
+    #                 except:
+    #                     pass
 
-                    db_handler2 = db.DBHandler()
-                    book_id = db_handler2.fetch_from_table("books", "link", book["link"])
+    #                 db_handler2 = db.DBHandler()
+    #                 book_id = db_handler2.fetch_from_table("books", "link", book["link"])
                     
-                    db_handler3 = db.DBHandler()
-                    if is_rec == True:
-                        db_handler3.insert_into_table(
-                            "recs",
-                            [ctx.author.id, book_id[0], wait_opinion.content[1:], 1]
-                        )
-                    else:
-                        db_handler3.insert_into_table(
-                            "recs",
-                            [ctx.author.id, book_id[0], wait_opinion.content[1:], 0]
-                        )
+    #                 db_handler3 = db.DBHandler()
+    #                 if is_rec == True:
+    #                     db_handler3.insert_into_table(
+    #                         "recs",
+    #                         [ctx.author.id, book_id[0], wait_opinion.content[1:], 1]
+    #                     )
+    #                 else:
+    #                     db_handler3.insert_into_table(
+    #                         "recs",
+    #                         [ctx.author.id, book_id[0], wait_opinion.content[1:], 0]
+    #                     )
 
-                    await ctx.send("Votre avis a bien été enregistré.")
+    #                 await ctx.send("Votre avis a bien été enregistré.")
 
-                except asyncio.TimeoutError: 
-                    return
+    #             except asyncio.TimeoutError: 
+    #                 return
 
-            elif check_answer.content.lower() in ("non", "n"):
-                answer_avis = [
-                    "Ok.", "Eh bien bonne journée", "C'est bien compréhensible.",
-                    "Mes attentes, déçues............"
-                ]
-                await ctx.send(random.choice(answer_avis))
+    #         elif check_answer.content.lower() in ("non", "n"):
+    #             answer_avis = [
+    #                 "Ok.", "Eh bien bonne journée", "C'est bien compréhensible.",
+    #                 "Mes attentes, déçues............"
+    #             ]
+    #             await ctx.send(random.choice(answer_avis))
 
-        except asyncio.TimeoutError: 
-            return
+    #     except asyncio.TimeoutError: 
+    #         return
 
-    @commands.command(aliases=['va'])
-    async def voiravis(self, ctx, *arg):
-        book = await self.handle_avis(ctx, arg)
+    # LOUCIL
+    # @commands.command(aliases=['va'])
+    # async def voiravis(self, ctx, *arg):
+    #     book = await self.handle_avis(ctx, arg)
 
-        if not book:
-            await ctx.send("Désolée, mais ce livre est un mythe.")
+    #     if not book:
+    #         await ctx.send("Désolée, mais ce livre est un mythe.")
 
-        db_handler = db.DBHandler()
-        book_id = db_handler.fetch_from_table("books", "link", book["link"])[0]
-        db_handler2 = db.DBHandler()
-        avis = db_handler2.fetch_from_table("recs", "book_id", book_id, many=True)
-        formatted_avis = await self.format_avis(avis)
+    #     db_handler = db.DBHandler()
+    #     book_id = db_handler.fetch_from_table("books", "link", book["link"])[0]
+    #     db_handler2 = db.DBHandler()
+    #     avis = db_handler2.fetch_from_table("recs", "book_id", book_id, many=True)
+    #     formatted_avis = await self.format_avis(avis)
 
-        await ctx.send(formatted_avis)
+    #     await ctx.send(formatted_avis)
 
     # @commands.command(aliases=['vl'])
     # TODO: Un jour, fonction recherche de livre
@@ -188,11 +192,13 @@ class Productivity(commands.Cog):
     async def ajoutermot(self, ctx, arg=None):
         if not arg:
             await ctx.send("Il vous faut, faquin(e), ajouter un mot et non du rien.")
+            return
 
         word = await scrapers.DictionaryThings.get_word(arg)
 
-        if word == False:
+        if not word:
             await ctx.send("Le mot n'existe pas. HONTE.")
+            return
         else:
             db_obj = db.DBHandler()
             db_obj.insert_into_table("rare_words", [arg.lower(), ])
@@ -203,6 +209,7 @@ class Productivity(commands.Cog):
     async def post_definition(self, ctx, arg=None):
         if not arg:
             await ctx.send("Il vous faut, faquin(e), ajouter un mot et non du rien.")
+            return
 
         word = await scrapers.DictionaryThings.get_word(arg)
         
