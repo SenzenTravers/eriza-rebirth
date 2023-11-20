@@ -6,12 +6,10 @@ import discord
 
 from discord.ext import commands, tasks
 
-# from .utils import avis, scrapers
-# LUCILE, N'OUBLIE PAS
 from .utils import avis, db, scrapers
 
 contest_time = dt.time(hour=19, minute=00)
-word_time = dt.time(hour=21, minute=4)
+word_time = dt.time(hour=12, minute=0)
 
 
 class Productivity(commands.Cog):
@@ -43,7 +41,7 @@ class Productivity(commands.Cog):
     async def random_mot(self):
         chann = self.bot.get_channel(701536565947793569)
         db_obj = db.DBHandler()
-        word = db_obj.fetch_random_word()
+        word = await db_obj.fetch_random_word()
         result = await scrapers.DictionaryThings.get_word(word[1])
 
         await chann.send(f"**LE MOT RARE DU JOUR**\n\n:book: {result}")
@@ -201,8 +199,11 @@ class Productivity(commands.Cog):
             return
         else:
             db_obj = db.DBHandler()
-            db_obj.insert_into_table("rare_words", [arg.lower(), ])
-            await ctx.send(f"Le mot {arg} a bien été enregistré.")
+            try:
+                db_obj.insert_into_table("rare_words", [arg.lower(), ])
+                await ctx.send(f"Le mot {arg} a bien été enregistré.")
+            except:
+                await ctx.send("Le mot que vous tentez d'ajouter existe déjà (ou Sen ne sait pas coder).")
 
     ############# Dictionaries and stuff
     @commands.command(aliases=['def'])

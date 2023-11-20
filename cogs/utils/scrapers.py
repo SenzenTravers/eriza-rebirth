@@ -22,7 +22,7 @@ async def scrape(url, func):
 class DictionaryThings:
     @staticmethod
     async def return_word(soup):
-        if "Cette forme est introuvable" in soup:
+        if "Cette forme est introuvable" in soup.text:
             return False
         
         word_title = soup.find(id="vitemselected")
@@ -36,7 +36,6 @@ class DictionaryThings:
     async def get_word(word):
         url = f"https://www.cnrtl.fr/definition/{word}"
         word_definition = await scrape(url, DictionaryThings.return_word)
-        
         if word_definition == False:
             return False
         else:

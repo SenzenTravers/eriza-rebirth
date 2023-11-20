@@ -15,10 +15,10 @@ class DBHandler:
         self.cur = cur
 
     def db_decorator(func):
-        def wrapper(self, *args, **kwargs):
+        async def wrapper(self, *args, **kwargs):
             self.conn = psycopg2.connect(config("DATABASE_URL"))
             self.cur = self.conn.cursor()
-            func(self, *args)
+            await func(self, *args)
             self.cur.close()
             self.conn.close()
 
@@ -36,21 +36,12 @@ class DBHandler:
         )
         self.conn.commit()
 
-        # LUCILE
-        self.cur.execute(
-            """
-            DROP TABLE IF EXISTS sprints;
-            """
-        )
-        self.conn.commit()
-
         self.cur.execute(
             """
             CREATE TABLE IF NOT EXISTS sprints (
                 id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-                serveur_id VARCHAR(100) NOT NULL UNIQUE,
-                status INT,
-                time_end TIMESTAMP NOT NULL
+                server_id VARCHAR(100) NOT NULL UNIQUE,
+                status INT
             );
             """
         )
@@ -84,9 +75,37 @@ class DBHandler:
         # self.conn.commit()
 
     @db_decorator
-    def insert_into_table(self, table, values):
+    async def fetch_random_word(self):
+        self.cur.execute("""
+            SELECT * FROM rare_words
+            ORDER BY RANDOM()
+            LIMIT 1""")
+        word = self.cur.fetchone()
+
+        return word
+
+    @db_decorator
+    async def fetch_from_table(self, table, column, value, many=None):
+        self.cur.execute(
+            f"""
+            SELECT * FROM {table}
+            WHERE {column} = '{value}';
+            """
+        )
+
+        if not many:
+            result = self.cur.fetchone()
+        else:
+            result = self.cur.fetchall()
+
+        return result
+
+    @db_decorator
+    async def insert_into_table(self, table,values):
         if table == "rare_words":
             fields = "word"
+        elif table == "sprints":
+            fields = "server_id, status"
         elif table == "books":
             fields = "link"
         elif table == "recs":
@@ -96,16 +115,6 @@ class DBHandler:
             f"INSERT INTO {table}({fields}) VALUES({handle_list(values)})"
         )
         self.conn.commit()
-
-    @db_decorator
-    def fetch_random_word(self):
-        self.cur.execute("""
-            SELECT * FROM rare_words
-            ORDER BY RANDOM()
-            LIMIT 1""")
-        word = self.cur.fetchone()
-
-        return word
 
 #     def __init__(self):
 #         # Connect to server
@@ -117,42 +126,6 @@ class DBHandler:
 #             database=config("db_name")
 #             )
 #         self.cur = self.connection.cursor()
-
-#     def create_tables(self):
-#         self.cur.execute(
-#             """
-#             CREATE TABLE IF NOT EXISTS rare_words (
-#                 id INT AUTO_INCREMENT PRIMARY KEY,
-#                 word VARCHAR(100) NOT NULL UNIQUE
-#             );
-#             """
-#         )
-#         self.connection.commit()
-#         self.cur.execute(
-#             """
-#             CREATE TABLE IF NOT EXISTS books (
-#                 id INT AUTO_INCREMENT PRIMARY KEY,
-#                 link VARCHAR(255) NOT NULL UNIQUE
-#             );
-#             """
-#         )
-#         self.connection.commit()
-#         self.cur.execute(
-#             """
-#             CREATE TABLE IF NOT EXISTS recs (
-#                 id INT AUTO_INCREMENT PRIMARY KEY,
-#                 member_id VARCHAR(255) NOT NULL,
-#                 book_id INT NOT NULL,
-#                 body TEXT(10000) NOT NULL,
-#                 rec INT,
-#                 FOREIGN KEY (book_id) REFERENCES books(id),
-#                 CONSTRAINT UC_a_rec UNIQUE (member_id, book_id)
-#             );
-#             """
-#         )
-#         self.connection.commit()
-#         self.cur.close()
-#         self.connection.close()
 
 #     def fetch_from_table(self, table, column, value, many=None):
 #         self.cur.execute(
@@ -186,5 +159,6 @@ class DBHandler:
 #         return result
 
 
-temp_loader = DBHandler()
-temp_loader.create_tables()
+# LUCILE
+# temp_loader = DBHandler()
+# temp_loader.create_tables()

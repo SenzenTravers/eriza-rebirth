@@ -6,7 +6,8 @@ import discord
 from discord.ext import commands
 
 from .utils.coureur import *
-from .utils.coureurs_texts import *
+from .utils.coureurs_texts import SprintEndText
+from .utils.db import DBHandler
 
 
 class Coureur(commands.Cog):
@@ -18,10 +19,9 @@ class Coureur(commands.Cog):
 
     @commands.command(aliases=['c'])
     async def course(self, ctx, *arg):
-        error_format = """
-        Merci de formater votre message de la façon suivante :
-        ```course à 15 pour 30``` (unités en minutes)
-        """ 
+        db_handler = DBHandler()
+        error_format = "Merci de formater votre message de la façon suivante :\n" \
+        "```course à 15 pour 30``` (unités en minutes)"
         error_already_course = "Un marathon d'écriture est déjà en cours !"
 
         sprint_data = return_delays(arg)
@@ -33,22 +33,43 @@ class Coureur(commands.Cog):
         elif sprint_data == False:
             await ctx.channel.send(error_format)
         else:
+            # Everything is fine, so we can launch the sprint properly
+            server_id = ctx.message.guild.id
+
+            #basically, get_sprint seems like it's not awaited
+            get_sprint = await db_handler.fetch_from_table("sprints", "server_id", server_id)
+
+            if get_sprint is None:
+                try:
+                    await db_handler.insert_into_table(
+                        "sprints",
+                        [
+                            str(server_id),
+                            1
+                        ])
+                    get_sprint = await db_handler.fetch_from_table("sprints", "server_id", str(server_id))
+                except Exception as e:
+                    await ctx.send(f"SEN, tu sais que tu devras corriger ceci : {e}")
+
+            # Commencer le sprint
             self.sprint = True
             if start_time.minute < 10:
                 await ctx.channel.send(f"Le marathon commencera à {start_time.hour}h0{start_time.minute} pour {duration} minutes.")
             else:
                 await ctx.channel.send(f"Le marathon commencera à {start_time.hour}h{start_time.minute} pour {duration} minutes.")
+
             await asyncio.sleep(sprint_data[0])
-            
+
             if self.runners == {}:
                 self.sprint = False
-                await ctx.channel.send(random.choice(sprint_cancelled))
+                await ctx.channel.send(random.choice(SprintEndText.sprint_cancelled))
             else:
                 mentions = ", ".join([dude.mention for dude in self.runners.keys()])
-                await ctx.channel.send(f"""{mentions}
-:sparkles::sparkles::sparkles: **Un, deux, trois, GO** !:sparkles::sparkles::sparkles:
-                
-Vous avez {duration} minutes !""")
+                await ctx.channel.send(
+                    f"{mentions}\n" +
+                    random.choice(SprintEndText.sprint_start) +
+                    f"\n Vous avez {duration} minutes !"
+                    )
                 await asyncio.sleep(sprint_data[1])
 
                 mentions = ", ".join([dude.mention for dude in self.runners.keys()])
@@ -60,7 +81,7 @@ Vous avez {duration} minutes !""")
                 self.enders = {}
 
                 results = "\n:sparkles::sparkles::sparkles: **C'EEEEEEST *FINI***:sparkles::sparkles::sparkles:" + \
-                    f"\n\n{finished_list}\n\n{random.choice(inspiring_quotes)}"
+                    f"\n\n{finished_list}\n\n{random.choice(SprintEndText.inspiring_quotes)}"
                 await ctx.channel.send(results)
 
     @commands.command(aliases=['cm'])
@@ -110,6 +131,7 @@ Vous avez {duration} minutes !""")
         cleaned_users = []
 
         for user_results in sorted_users:
+            # LUCILE : le bug est ici
             written_words = self.enders[user_results[0]] - user_results[1]
             user_results = list(user_results)
             user_results.append(written_words)
@@ -121,7 +143,7 @@ Vous avez {duration} minutes !""")
                     f"\n:star2: {item[0].mention}: {item[1]} mots, dont {item[2]} nouveaux !" for item in cleaned_users]
             elif written_words == 0:
                 print("Vraiment ?")
-                sorted_users = [f"\n:star2: {item[0].mention} {random.choice(zero_words)}" for item in cleaned_users]
+                sorted_users = [f"\n:star2: {item[0].mention} {random.choice(SprintEndText.zero_words)}" for item in cleaned_users]
             else:
                 sorted_users = [f"\n:star2: {item[0].mention} a effacé {written_words} mots." for item in cleaned_users]
 
@@ -130,7 +152,7 @@ Vous avez {duration} minutes !""")
         else:
             sorted_users_list = f"""{sorted_users[0]}
             
-{random.choice(sprint_alone)}
+{random.choice(SprintEndText.sprint_alone)}
             """
 
         return sorted_users_list
