@@ -85,19 +85,21 @@ class DBHandler:
         return word
 
     @db_decorator
-    async def fetch_from_table(self, table, column, value, many=None):
+    async def fetch_from_table(self, table, column, value, many=None, ctx=None):
         self.cur.execute(
-            f"""
-            SELECT * FROM {table}
-            WHERE {column} = '{value}';
-            """
+            f"SELECT * FROM {table} WHERE {column} = '{value}';"
         )
 
+        await ctx.send(self.cur.execute(
+            f"SELECT * FROM {table} WHERE {column} = '{value}';"
+        ))
         if not many:
             result = self.cur.fetchone()
         else:
             result = self.cur.fetchall()
 
+        if ctx:
+            await ctx.channel.send(result)
         return result
 
     @db_decorator

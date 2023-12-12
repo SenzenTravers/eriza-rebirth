@@ -17,6 +17,20 @@ class Coureur(commands.Cog):
         self.runners = {}
         self.enders = {}
 
+    @commands.command(aliases=["x"])
+    async def bleh(self, ctx, *arg):
+        db_handler = DBHandler()
+        server_id = ctx.message.guild.id
+
+        #basically, get_sprint seems like it's not awaited
+        stuff = await db_handler.fetch_from_table(
+            "sprints",
+            "server_id",
+            server_id,
+            ctx=ctx
+        )
+        # await ctx.channel.send(stuff)
+
     @commands.command(aliases=['c'])
     async def course(self, ctx, *arg):
         db_handler = DBHandler()
