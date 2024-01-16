@@ -12,6 +12,7 @@ class Eriza(commands.Bot):
         await self.load_extension('cogs.configurateur')
         await self.load_extension('cogs.coureur')
         await self.load_extension('cogs.productivity')
+        # await self.load_extension('cogs.shards')
         await self.load_extension('cogs.shitpost')
 
 intents = discord.Intents.all()
@@ -32,8 +33,8 @@ async def on_message(message):
         return
     
     elif msg.startswith('eriza'):
-        chance = random.choice(range(200))
-        if chance > 298:
+        chance = random.choice(range(100))
+        if chance > 98:
             answers = [
                 "C'est bien moi :D", ":heart:", ">:3", "... Jésus ?", "Sen coupable"
             ]
@@ -56,9 +57,20 @@ async def on_message(message):
     elif 'merci, eriza' in msg or "merci eriza" in msg:
         await message.channel.send("De rien :D")
 
+    elif (
+        'jtm, eriza' in msg or "jtm eriza" in msg
+        or "je t'aime eriza" in msg or "je t'aime, eriza" in msg
+        ):
+        ilu = ["Moi non", "Je suis désolée, mais... Je suis un bot.",
+            "Tout ceci ne t'arriverait pas si tu te concentrais sur le J-man",
+            "no", "Pas devant les enfants, voyons !",
+            "MAMAAAAAN, ON M'INDÉCENTISE èé"
+            ]
+        await message.channel.send(random.choice(ilu))
+
     if message.author.id == 326467419562311680:
         chance = random.choice(range(300))
-        if chance > 299:
+        if chance > 298:
             await message.channel.send(random.choice(desapprobation))
 
 client_secret = config("client_secret")
