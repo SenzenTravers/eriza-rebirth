@@ -22,18 +22,24 @@ productivity_text = """
     `!appels` *pour recevoir par MP une liste d'appels à texte listés par date de rendu.*
     `ALIAS : !a`
 
-    `!commenter` *pour donner un avis sur un bouquin.*
-    `ALIAS : !co`
-    `FORMAT : !co De bons présages`
+    `!cerveau` *pour recevoir un rappel à une heure de votre choix.*
+    `ALIAS : !ce, !brain, !getwo`
+    `FORMAT : !cerveau CONTENU DU RAPPEL XXhXX`
     
-    `!voiravis` *pour voir les avis sur un bouquin.*
-    `ALIAS : !va`
-    `FORMAT : !va De bons présages`
+    `!rare` *pour recevoir un mot rare au hasard.*
+
     """
 
 shitpost_text = """
+    `!dimitri` *pour recevoir une dose de Dimitri.*
+
     `!drama` *DUN DUN DUUUUUUN.*
     `ALIAS : !d`
+
+    `!fic` *pour générer une fic sur deux personnages de votre choix*
+    `FORMAT : !fic PersoA, PersoB`
+
+    `!folamour` *pour soutenir Queenie.*
 
     `!geto` *pour recevoir une dose de Geto.*
 

@@ -24,6 +24,17 @@ class DBHandler:
 
         return wrapper
 
+    def db_decorator_fetch(func):
+        async def wrapper(self, *args, **kwargs):
+            self.conn = psycopg2.connect(config("DATABASE_URL"))
+            self.cur = self.conn.cursor()
+            stuff = await func(self, *args)
+            self.cur.close()
+            self.conn.close()
+            return stuff
+
+        return wrapper
+
     @db_decorator
     def create_tables(self):
         self.cur.execute(
@@ -65,16 +76,16 @@ class DBHandler:
         # self.cur.execute(
         #     """
         #     CREATE TABLE IF NOT EXISTS words_counts (
-        #         id SERIAL PRIMARY KEY,
-        #         sprint_id VARCHAR(100) NOT NULL UNIQUE,
-        #         starting_words INT NOT NULL,
+        #         id INT GENERATED ALWAYS AS IDENTITY,
+        #         member VARCHAR(100) NOT NULL UNIQUE,
+        #         date INT NOT NULL,
         #         ending_words INT
         #     );
         #     """
         # )
         # self.conn.commit()
 
-    @db_decorator
+    @db_decorator_fetch
     async def fetch_random_word(self):
         self.cur.execute("""
             SELECT * FROM rare_words
@@ -84,22 +95,18 @@ class DBHandler:
 
         return word
 
-    @db_decorator
-    async def fetch_from_table(self, table, column, value, many=None, ctx=None):
+    @db_decorator_fetch
+    async def fetch_from_table(self, table, column, value, many=None):
+        # SEN : REMEMBER TO TAKE OUT THE ' AROUND VALUE IF VALUE=INT
         self.cur.execute(
             f"SELECT * FROM {table} WHERE {column} = '{value}';"
         )
 
-        await ctx.send(self.cur.execute(
-            f"SELECT * FROM {table} WHERE {column} = '{value}';"
-        ))
         if not many:
             result = self.cur.fetchone()
         else:
             result = self.cur.fetchall()
 
-        if ctx:
-            await ctx.channel.send(result)
         return result
 
     @db_decorator

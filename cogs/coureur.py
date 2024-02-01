@@ -5,7 +5,7 @@ import random
 import discord
 from discord.ext import commands
 
-from .utils.coureur import *
+from .utils.time_handler import *
 from .utils.coureurs_texts import SprintEndText
 from .utils.db import DBHandler
 
@@ -22,14 +22,13 @@ class Coureur(commands.Cog):
         db_handler = DBHandler()
         server_id = ctx.message.guild.id
 
-        #basically, get_sprint seems like it's not awaited
         stuff = await db_handler.fetch_from_table(
             "sprints",
             "server_id",
             server_id,
             ctx=ctx
         )
-        # await ctx.channel.send(stuff)
+        await ctx.channel.send(stuff)
 
     @commands.command(aliases=['c'])
     async def course(self, ctx, *arg):
@@ -171,6 +170,18 @@ class Coureur(commands.Cog):
 
         return sorted_users_list
 
+    @commands.command(aliases=['s'])
+    async def session(self, ctx, *arg):
+        sprint_data = return_delays(arg)
+        start_time = sprint_data[2]
+        duration = int(sprint_data[1]/60)
+
+        if start_time.minute < 10:
+            await ctx.channel.send(f"La session commencera à {start_time.hour}h0{start_time.minute} pour {duration} minutes.")
+        else:
+            await ctx.channel.send(f"La session commencera à {start_time.hour}h{start_time.minute} pour {duration} minutes.")
+
+        await asyncio.sleep(sprint_data[0])
 
 async def setup(bot): # set async function
     await bot.add_cog(Coureur(bot)) # Use await

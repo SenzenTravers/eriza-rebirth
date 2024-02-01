@@ -7,6 +7,7 @@ import discord
 from discord.ext import commands, tasks
 
 from .utils import avis, db, scrapers
+from .utils.time_handler import reminder_format
 
 contest_time = dt.time(hour=19, minute=00)
 word_time = dt.time(hour=12, minute=0)
@@ -81,6 +82,29 @@ class Productivity(commands.Cog):
                 user = ctx.message.author
                 await user.send(contest)
 
+    @commands.command()
+    async def rare(self, ctx):
+        db_obj = db.DBHandler()
+        word = await db_obj.fetch_random_word()
+        result = await scrapers.DictionaryThings.get_word(word[1])
+
+        await ctx.send(f"**VOTRE MOT RARE, BOSS**\n\n:book: {result}")
+
+    @commands.command(aliases=['ce', 'brain', 'getwo'])
+    async def cerveau(self, ctx, *, message=None):
+        if not message:
+            await ctx.send("Certes, mais que dois-je vous rappeler ? (EXEMPLE : !cerveau MESSAGE 09h10)")
+
+        else:
+            try:
+                rappel, reminder_time = reminder_format(message)
+                await ctx.send(":pencil: Rappel enregistré ! ")
+                await asyncio.sleep(reminder_time)
+                user = ctx.message.author
+                await user.send(f":pencil: **RAPPEL :** {rappel}")
+            except:
+                await ctx.send("Erreur de format ou de Sen. EXEMPLE : !cerveau MESSAGE 09h10")
+        
     # LOUCIL
     # @commands.command(aliases=['co'])
     # async def commenter(self, ctx, *arg):

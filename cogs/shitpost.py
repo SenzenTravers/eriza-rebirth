@@ -28,6 +28,24 @@ class Shitpost(commands.Cog):
         await ctx.send(message)
 
     @commands.command()
+    async def folamour(self, ctx):
+        speak = ["Et si tu lui parlais ?", "PARLE-LUI",
+            "Mais as-tu pensé à... lui parler ?",
+            "https://tenor.com/view/you-better-start-talking-cordell-walker-walker-texas-ranger-speak-now-let-me-hear-it-gif-1894414266930324422",
+            "https://tenor.com/view/speakup-talk-cat-speak-up-cute-gif-1570144500718911029",
+            "https://tenor.com/view/go-talk-to-him-ella-payne-house-of-payne-wing-woman-go-see-him-gif-19162362",
+            "*susurre* Parle-lui", "Paaaaaaaaaaaaaarrrrrrrle-lllluuuuuuuiiiiiiiiii", "Hypothèse : tu lui parles.", "nick"
+        ]
+        talk = random.choice(speak)
+
+        if talk == "nick":
+            guild = self.bot.get_guild(ctx.message.guild.id)
+            queenie = guild.get_member(305418034112233492)
+            await queenie.edit(nick="PARLE-LUI")
+        else:
+            await ctx.send(talk)
+
+    @commands.command()
     async def gego(self, ctx):
         user = ctx.message.author
         await user.send(random.choice(gego))

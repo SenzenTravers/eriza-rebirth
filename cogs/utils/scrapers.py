@@ -134,3 +134,23 @@ class WritingContest:
             if " :" in bit
             else bit
             for bit in contest_list]
+
+URL_TEST = "http://127.0.0.1:8000/"
+class ShardsGame:
+    @staticmethod
+    async def is_player(player_id):
+        """
+        Return a list of current writing contests.
+        """
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.post(
+                    f"{URL_TEST}/players/is_discord_player/",
+                    data={"discord_id": player_id}
+                    ) as response:
+                    body = await response.text()
+
+                return body
+
+        except Exception as e:
+            return e
