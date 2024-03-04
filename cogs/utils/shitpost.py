@@ -130,7 +130,7 @@ def queenize(texte):
 def fanfic_it(text):
     text = text.split(",")
     genrenb = random.randint(1, 2)
-    warning = random.randint(1, 3)
+    warningb = random.randint(1, 5)
     clichenb = random.randint(1, 2)
 
     if genrenb == 1:
@@ -146,10 +146,10 @@ def fanfic_it(text):
     else:
         cliche_fic = "Elle ne contient aucun archétype particulier."
 
-    if warning < 3:
-        warning = "et ne nécessite aucun avertissement quant à son contenu."
+    if warningb < 3:
+        warning_fic = "et ne nécessite aucun avertissement quant à son contenu."
     else:
-        warning = f"et nécessite un avertissement pour le contenu suivant : {random.choice(warning)}"
+        warning_fic = f"et nécessite un avertissement pour le contenu suivant : {random.choice(warning)}"
 
     if len(text) == 2:
         pairingz = f"{text[0]} et {text[1].strip()}"
@@ -157,7 +157,7 @@ def fanfic_it(text):
         pairingz = f"{text[0]}, {text[1].strip()} et {text[2].strip()}"
 
     result = f"""Mon algorythme a déterminé la fic optimale à écrire pour {pairingz} !
-Elle est de genre {genre_final} {warning}.
+Elle est de genre {genre_final} {warning_fic}.
 {cliche_fic}
 Sa longueur est {random.choice(longueur)}.
 L'écrire{random.choice(whywrite)}."""
