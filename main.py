@@ -6,14 +6,16 @@ from discord.ext import commands
 
 from cogs.utils.resources import desapprobation, jesus
 
-class Eriza(commands.Bot):        
-    async def on_ready(self):
-        print(f'Bonjour, {self.user}')
+class Eriza(commands.Bot):
+    async def setup_hook(self):
         await self.load_extension('cogs.configurateur')
         await self.load_extension('cogs.coureur')
         await self.load_extension('cogs.productivity')
         # await self.load_extension('cogs.shards')
         await self.load_extension('cogs.shitpost')
+
+    async def on_ready(self):
+        print(f'Je suis {self.user} et je VIS :D')
 
 intents = discord.Intents.all()
 activity = discord.Activity(
