@@ -27,3 +27,7 @@ Found these processes inside the machine with open listening sockets:
 
   Finished deploying
 sen@Reynar:~/Documents/Projets/eriza2$ 
+
+## Run test
+- Va sur le fichier source
+- Lance `python -m unittest`

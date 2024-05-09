@@ -11,7 +11,14 @@ class Shitpost(commands.Cog):
 
     @commands.command(aliases=["d", "D"])
     async def drama(self, ctx):
-        await ctx.send("https://tenor.com/view/dramatic-chipmunk-gif-19778021")
+        await ctx.send(
+            random.choice(
+                "https://tenor.com/view/drama-weasel-gif-25999159",
+                "https://tenor.com/view/dramatic-music-monkey-piano-drama-gif-5631330",
+                "https://tenor.com/view/dun-dun-dun-tykie-tykie-dun-dun-dun-gif-11482815036668846066",
+                "https://tenor.com/view/max-rebo-star-wars-music-book-of-boba-fett-music-stops-gif-24461528"
+            )
+        )
 
     @commands.command()
     async def dimitri(self, ctx):

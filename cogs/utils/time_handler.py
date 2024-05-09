@@ -79,8 +79,5 @@ def reminder_format(message):
         return False
     else:
         reminder = message[:-5]
-        reminder = message.split()
-        reminder.pop(0)
-        reminder = " ".join(reminder)
 
         return [reminder, time_reminder]

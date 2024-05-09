@@ -37,6 +37,7 @@ class Productivity(commands.Cog):
 
         for contest in to_post:
             await channel.send(contest)
+            await asyncio.sleep(1)
 
     @tasks.loop(time=word_time)
     async def random_mot(self):
@@ -77,10 +78,11 @@ class Productivity(commands.Cog):
                 by_added=False, by_deadline=True)
 
             contests.reverse()
+            user = ctx.message.author
 
             for contest in contests:
-                user = ctx.message.author
                 await user.send(contest)
+                await asyncio.sleep(1)
 
     @commands.command()
     async def rare(self, ctx):
@@ -105,111 +107,6 @@ class Productivity(commands.Cog):
             except:
                 await ctx.send("Erreur de format ou de Sen. EXEMPLE : !cerveau MESSAGE 09h10")
         
-    # LOUCIL
-    # @commands.command(aliases=['co'])
-    # async def commenter(self, ctx, *arg):
-    #     """
-    #     Permet de donner un avis sur un bouquin
-    #     """
-    #     def answer(msg):
-    #         if msg.channel == ctx.channel and msg.author == ctx.author:
-    #             return msg.content.lower() in ("oui", "o", "non", "b")
-
-    #     def get_opinion(msg):
-    #         return msg.channel == ctx.channel and msg.author == ctx.author and msg.content.startswith("=")
-
-    #     book = await self.handle_avis(ctx, arg)
-
-    #     if not book:
-    #         ctx.send("Désolée ; cet ouvrage est le fruit de votre imagination échevelée.")
-
-    #     try:
-    #         await ctx.send("Voulez-vous écrire un avis sur ce livre ? (O/Oui/N/Non)")
-    #         check_answer = await self.bot.wait_for('message', check=answer, timeout = 60.0)
-
-    #         if check_answer.content.lower() in ("oui", "o"):
-    #             try:
-    #                 is_rec = False
-    #                 await ctx.send("Veuillez maintenant écrire votre avis en le préfixant par =")
-    #                 wait_opinion = await self.bot.wait_for(
-    #                     'message',
-    #                     check=get_opinion,
-    #                     timeout = 60.0
-    #                     )
-                    
-    #                 await ctx.send("Est-ce une rec ? (o/oui, n/non)")
-    #                 wait_rec = await self.bot.wait_for(
-    #                         'message',
-    #                         check=answer,
-    #                         timeout = 30.0
-    #                         )
-
-    #                 if wait_rec.content.lower() in ("o", "oui"):
-    #                     is_rec = True
-
-    #                 db_handler = db.DBHandler()
-    #                 try:
-    #                     await db_handler.insert_into_table("books", [book["link"]])
-    #                 except:
-    #                     pass
-
-    #                 db_handler2 = db.DBHandler()
-    #                 book_id = db_handler2.fetch_from_table("books", "link", book["link"])
-                    
-    #                 db_handler3 = db.DBHandler()
-    #                 if is_rec == True:
-    #                     db_handler3.insert_into_table(
-    #                         "recs",
-    #                         [ctx.author.id, book_id[0], wait_opinion.content[1:], 1]
-    #                     )
-    #                 else:
-    #                     db_handler3.insert_into_table(
-    #                         "recs",
-    #                         [ctx.author.id, book_id[0], wait_opinion.content[1:], 0]
-    #                     )
-
-    #                 await ctx.send("Votre avis a bien été enregistré.")
-
-    #             except asyncio.TimeoutError: 
-    #                 return
-
-    #         elif check_answer.content.lower() in ("non", "n"):
-    #             answer_avis = [
-    #                 "Ok.", "Eh bien bonne journée", "C'est bien compréhensible.",
-    #                 "Mes attentes, déçues............"
-    #             ]
-    #             await ctx.send(random.choice(answer_avis))
-
-    #     except asyncio.TimeoutError: 
-    #         return
-
-    # LOUCIL
-    # @commands.command(aliases=['va'])
-    # async def voiravis(self, ctx, *arg):
-    #     book = await self.handle_avis(ctx, arg)
-
-    #     if not book:
-    #         await ctx.send("Désolée, mais ce livre est un mythe.")
-
-    #     db_handler = db.DBHandler()
-    #     book_id = db_handler.fetch_from_table("books", "link", book["link"])[0]
-    #     db_handler2 = db.DBHandler()
-    #     avis = db_handler2.fetch_from_table("recs", "book_id", book_id, many=True)
-    #     formatted_avis = await self.format_avis(avis)
-
-    #     await ctx.send(formatted_avis)
-
-    # @commands.command(aliases=['vl'])
-    # TODO: Un jour, fonction recherche de livre
-    # async def voirlivres(self, ctx, *arg):
-    #     db_handler = db.DBHandler()
-    #     books = db_handler.fetch_all_from_table("books")
-
-    #     for book in books:
-    #         lookuper = avis.BookSifter()
-    #         rec = await lookuper.look_up(book[1])
-    #         print(rec)
-
     @commands.command(aliases=['am'])
     async def ajoutermot(self, ctx, arg=None):
         if not arg:
@@ -244,34 +141,7 @@ class Productivity(commands.Cog):
             await ctx.send(word)
 
     #### Utils
-    async def handle_avis(self, ctx, arg):
-        """
-        Return False if something is wrong. Else, return rec.
-        """
-        if not arg:
-            answer = "Tenter de chercher le rien... Très post-moderne."
-            await ctx.channel.send(answer)
 
-        elif len(arg) <= 2:
-            await ctx.channel.send("Merci de préciser un titre ET un auteur.")
-        else:
-            lookuper = avis.BookSifter()
-            rec = await lookuper.look_up(arg)
-
-            if type(rec) != str:
-                if len(rec["authors"]) == 1:
-                    formatted = f"**{rec['title']}**, par {rec['authors'][0]}\n{rec['link']}"
-                else:
-                    authors = await lookuper.deal_with_authors(rec["authors"])
-                    formatted = f"**{rec['title']}**, par {authors}\n{rec['link']}"
-
-                await ctx.channel.send(formatted)
-
-            return rec
-        
-        return False
-
-    async def format_avis(self, result):
         formatted = []
 
         for avis in result:
