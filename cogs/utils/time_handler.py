@@ -10,7 +10,7 @@ def calculate_sprint(arg):
             pos = arg.index("à")
             time = int(arg[pos+1])
         else:
-            time = dt.datetime.now().minute + 1
+            time = dt.datetime.now().minute + 2
 
         if "pour" in arg:
             pos_p = arg.index("pour")
@@ -28,6 +28,7 @@ def return_delays(msg):
     """
     Take the pair of numbers returned to calculate_sprint
     and turn them into the length of time to wait.
+    TODO : to improve so it doesn't fail when the time is finicky
     """
     time_pair = calculate_sprint(msg)
 

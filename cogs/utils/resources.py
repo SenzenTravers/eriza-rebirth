@@ -395,6 +395,8 @@ sen33 = "*se brûle bêtement*"
 sen34 = "*échoue à allumer à un feu*"
 sen35 = "*se brûle en échouant à allumer un feu*"
 sen36 = "Saikaaaaa, fais-moi la cuisine ;v;"
+sen37 = "*répond deux jours plus tard*"
+sen38 = "*part soudain faire le ménage*"
 
 # LAMENTS
 lament1 = "Ah ouais, quand même..."
@@ -483,12 +485,18 @@ jesus = ["JÉSUS !!!", "https://tenor.com/view/jesus-christ-wink-smile-jesus-gif
             "Jésus ! ;3", "J É S U S", "𝒥𝑒𝓈𝓊𝓈", "ʆЄƧƲƧ", "🐺♣  ן乇𝐬𝓤s  🐒🐳",
             "イエス", "JÉSUS :weary:", "Jezus... (avec l'accent polonais)",
             "Jesus ! (avec l'accent danois)", "*Rézous*",
-            "Je le sais bien, que vous blasphémez è_é"]
+            "Je le sais bien, que vous blasphémez è_é", "https://cdn.discordapp.com/attachments/778026188894371850/1249972335575040101/20240611_082333.jpg?ex=66956934&is=669417b4&hm=5c4e97edef552933564c76eaa1013cc83c458173f0e7379d6a3fbdbc9178bc29&",
+            "https://giphy.com/gifs/jesus-reaction-deal-with-it-ibGFpMv1Uoais", "https://giphy.com/gifs/jesus-popcorn-eating-6ZXoMtHImZOgw",
+            "https://giphy.com/gifs/5bRGtmvzCt0FW", "https://giphy.com/gifs/jesus-5Dr4LEzgJj1gA", "https://giphy.com/gifs/jesus-christ-SbRar1KEHbfa",
+            "https://giphy.com/gifs/jesus-animation-education-BJWeVFCqHuWYg", "https://giphy.com/gifs/photobucket-jesus-ursilius-ua2bpjVe0PhdK",
+            "https://giphy.com/gifs/jesus-RgcECi30FGKyc", "https://giphy.com/gifs/jesus-scraps-decent-Y5sAjV4QXO2Aw", "MAHOMET ! Surprise. Hihi.",
+            "JUDAS ! Surprise >=D. Hihihihi."
+            ]
 
 sensim = [sen1, sen2, sen3, sen4, sen5, sen6, sen7, sen8, sen9, sen10, sen11,
     sen12, sen13, sen14, sen15, sen16, sen17, sen18, sen19, sen20, sen21, sen22,
     sen23, sen24, sen25, sen26, sen27, sen28, sen29, sen30, sen31, sen32, sen33,
-    sen34, sen35]
+    sen34, sen35, sen36, sen37, sen38]
 
 laments = [
     lament1, lament2, lament3, lament4, lament5, lament6, lament7, lament8, lament9,
