@@ -71,9 +71,24 @@ async def on_message(message):
         await message.channel.send(random.choice(ilu))
 
     if message.author.id == 326467419562311680:
-        chance = random.choice(range(300))
-        if chance > 298:
+        chance = random.choice(range(500))
+        if chance > 498:
             await message.channel.send(random.choice(desapprobation))
+    elif message.author.id == 311408924504883201:
+        if "ferdinand" in msg:
+            ferdinands = [
+                "https://tenor.com/view/ferdinand-cow-gif-10632448",
+                "https://tenor.com/view/ferdinand-fire-emblem-fire-emblem-three-houses-ferdinand-aegir-gif-24409802",
+                "https://tenor.com/view/i-am-ferdinand-von-aegir-fire-emblem-hair-flip-gif-15284506",
+                "https://tenor.com/view/ferdinand-von-aegir-ferdinand-fe3h-fire-emblem-ferdibert-gif-25746297",
+                "F... Ferdie.........",
+                "Ferdinand... sama... ###>o<###",
+                "FERDINAAAAAAAAAAAAAND",
+                "FERDIIIIIIIIIIIIIIIIIE",
+                ":heart: <3.... Ferdie............ :heart::heart:...",
+                "Ferdinand von Aegir-dono n'est-il pas un peu Jésus, en somme ?"
+            ]
+            await message.channel(random.choice(ferdinands))
 
 client_secret = config("client_secret")
 

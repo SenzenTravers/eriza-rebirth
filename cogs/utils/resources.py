@@ -434,8 +434,10 @@ lament31 = "Wow...."
 ############## LISTE
 desapprobation = [
             "INÉDIT : une majorité des Français ne voteraient pas pour Sen aux présidentielles 2024",
-            ">: (", "Sen a tort", "Beurk, une Sen", "*Sen slander*",
-            "Eh bien JE DÉSAPPROUVE", ":black_heart:"]
+            ">: (", "Sen a tort", "Beurk, une Sen", "*Sen slander*", "LA VÉRITÉ SUR SEN : www.farmez-mes-bitcoins.com",
+            "Eh bien JE DÉSAPPROUVE", ":black_heart:", "Le saviez-vous ? Sen n'est pas un bot. LA HONTE.",
+            "C'est faux.", "INÉDIT : Sen n'aimerait ni le soleil, ni l'air pur.",
+            "INÉDIT : Sen, vampire ou développeuse informatique ? Le résultat pourrait vous surprendre !"]
 
 dimitri = [dimitri1, dimitri2, dimitri3, dimitri4, dimitri5, dimitri6, dimitri7,
            dimitri8, dimitri9, dimitri10, dimitri11, dimitri12, dimitri13,

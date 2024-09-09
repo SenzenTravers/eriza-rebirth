@@ -53,6 +53,9 @@ shitpost_text = """
     `!ouin` *pour recevoir du soutien dans les moments de détresse.*
     `ALIAS : !o`
 
+    `!pine` *Il est l'heure de savoir qui vous êtes.*
+    `ALIAS : aucun`
+
     `!queenie` *pour queeniser une phrase, parce que vous le pouvez.*
     `ALIAS : !q`
     `FORMAT : !q <texte>`
