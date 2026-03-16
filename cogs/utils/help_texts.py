@@ -39,8 +39,6 @@ shitpost_text = """
     `!fic` *pour générer une fic sur deux personnages de votre choix*
     `FORMAT : !fic PersoA, PersoB`
 
-    `!folamour` *pour soutenir Queenie.*
-
     `!geto` *pour recevoir une dose de Geto.*
 
     `!gego` *pour recevoir une dose de Geto/Gojo.*

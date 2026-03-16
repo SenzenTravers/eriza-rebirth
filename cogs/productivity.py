@@ -6,7 +6,7 @@ import discord
 
 from discord.ext import commands, tasks
 
-from .utils import avis, db, scrapers
+from .utils import db, scrapers
 from .utils.time_handler import reminder_format
 
 contest_time = dt.time(hour=19, minute=00)
@@ -126,35 +126,6 @@ class Productivity(commands.Cog):
             except:
                 await ctx.send("Le mot que vous tentez d'ajouter existe déjà (ou Sen ne sait pas coder).")
 
-    ############# Dictionaries and stuff
-    @commands.command(aliases=['def'])
-    async def post_definition(self, ctx, arg=None):
-        if not arg:
-            await ctx.send("Il vous faut, faquin(e), ajouter un mot et non du rien.")
-            return
-
-        word = await scrapers.DictionaryThings.get_word(arg)
-        
-        if word == False:
-            await ctx.send("Ce mot n'existe pas.")
-        else:
-            await ctx.send(word)
-
-    #### Utils
-
-        formatted = []
-
-        for avis in result:
-            user = await self.bot.fetch_user(int(avis[1]))
-            avis = avis[3]
-            if avis[-1] == 1:
-                formatted.append(f":sparkles: [RECOMMANDATION] {user.name}: {avis}")
-            else:
-                formatted.append(f":book: {user.name}: {avis}")
-                
-
-        return "\n\n".join(formatted)
-"Survoûter"
 
 async def setup(bot):
     await bot.add_cog(Productivity(bot))
