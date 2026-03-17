@@ -7,10 +7,14 @@ Merely run `python main.py` or `python3 main.py`, depending on your exploitation
 
 
 ## Fly.io
-### Deploying
-Go to the CLI.
-Run `fly auth login`
-Run `fly deploy`
+### Deploying with Fly.io
+First off, create your fly.io account. Then, you must install the fly software [following these instructions](https://app-generator.dev/docs/deployment/fly-io/index.html).
+
+Go to your terminal, from your fly app. Then, run the following:
+```
+fly auth login
+fly deploy
+```
 
 
 ### Documentation
