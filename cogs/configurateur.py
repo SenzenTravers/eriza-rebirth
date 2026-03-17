@@ -72,11 +72,6 @@ class Config(commands.Cog):
                         )
                 await ctx.send(embed=embed)
 
-    @commands.command(description="Annule le sprint en cours.")
-    async def annuler(self, ctx):
-        await self.bot.reload_extension(f"cogs.coureur")
-        await ctx.send("Le spr... La course a été annulée.")
-
     @commands.command(
         aliases=["help"],
         description="La fonctionnalité d'aide, tiens.")
@@ -106,5 +101,11 @@ class Config(commands.Cog):
         )
         await ctx.send(embed=embed)
 
-async def setup(bot): # set async function
-    await bot.add_cog(Config(bot)) # Use await
+    @commands.command(description="Annule le sprint en cours.")
+    async def annuler(self, ctx):
+        await self.bot.reload_extension(f"cogs.coureur")
+        await ctx.send("Le spr... La course a été annulée.")
+
+
+async def setup(bot):
+    await bot.add_cog(Config(bot))

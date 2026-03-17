@@ -92,6 +92,11 @@ class Productivity(commands.Cog):
 
         await ctx.send(f"**VOTRE MOT RARE, BOSS**\n\n:book: {result}")
 
+    @commands.command()
+    async def gneh(self, ctx, arg=None):
+        db_obj = db.DBHandler()
+        await db_obj.select_all_from_table("rare_words")
+
     @commands.command(aliases=['ce', 'brain', 'getwo'])
     async def cerveau(self, ctx, *, message=None):
         if not message:
@@ -120,12 +125,15 @@ class Productivity(commands.Cog):
             return
         else:
             db_obj = db.DBHandler()
-            try:
-                db_obj.insert_into_table("rare_words", [arg.lower(), ])
+            result = await db_obj.insert_into_table("rare_words", [arg.lower(), ])
+            
+            if result["code"] == 200:
                 await ctx.send(f"Le mot {arg} a bien été enregistré.")
-            except:
-                await ctx.send("Le mot que vous tentez d'ajouter existe déjà (ou Sen ne sait pas coder).")
-
+            else:
+                if result["error_name"] == "UniqueViolation":
+                    await ctx.send("Le mot que vous tentez d'ajouter existe déjà.")
+                else:
+                    await ctx.send("Une erreur est survenue. Veuillez réessayer.")
 
 async def setup(bot):
     await bot.add_cog(Productivity(bot))

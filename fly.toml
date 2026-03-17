@@ -13,4 +13,12 @@ auto_stop_machines = false
 auto_start_machines = false
 min_machines_running = 1
 
+[[services]]
+  internal_port = 5432 # Postgres instance
+  protocol = "tcp"
+
+[[services.ports]]
+  handlers = ["pg_tls"]
+  port = 5432
+
 [env]

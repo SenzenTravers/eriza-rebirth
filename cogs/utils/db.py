@@ -1,4 +1,4 @@
-import psycopg2
+import psycopg
 
 from decouple import config
 
@@ -16,17 +16,23 @@ class DBHandler:
 
     def db_decorator(func):
         async def wrapper(self, *args, **kwargs):
-            self.conn = psycopg2.connect(config("DATABASE_URL"))
-            self.cur = self.conn.cursor()
-            await func(self, *args)
-            self.cur.close()
-            self.conn.close()
+            try:
+                self.conn = psycopg.connect(config("DATABASE_URL"))
+                self.cur = self.conn.cursor()
+                await func(self, *args)
+                self.cur.close()
+                self.conn.close()
+                return {"code": 200}
+            except Exception as e:
+                print(f"Error with DBHandler: {e}")
+                return {"code": 500, "error_name": e.__class__.__name__}
+
 
         return wrapper
 
     def db_decorator_fetch(func):
         async def wrapper(self, *args, **kwargs):
-            self.conn = psycopg2.connect(config("DATABASE_URL"))
+            self.conn = psycopg.connect(config("DATABASE_URL"))
             self.cur = self.conn.cursor()
             stuff = await func(self, *args)
             self.cur.close()
@@ -73,18 +79,6 @@ class DBHandler:
         )
         self.conn.commit()
 
-        # self.cur.execute(
-        #     """
-        #     CREATE TABLE IF NOT EXISTS words_counts (
-        #         id INT GENERATED ALWAYS AS IDENTITY,
-        #         member VARCHAR(100) NOT NULL UNIQUE,
-        #         date INT NOT NULL,
-        #         ending_words INT
-        #     );
-        #     """
-        # )
-        # self.conn.commit()
-
     @db_decorator_fetch
     async def fetch_random_word(self):
         self.cur.execute("""
@@ -125,49 +119,10 @@ class DBHandler:
         )
         self.conn.commit()
 
-#     def __init__(self):
-#         # Connect to server
-#         self.connection = mysql.connector.connect(
-#             host="senestre-coquecigrues.fr",
-#             port=3306,
-#             user=config("db_user"),
-#             password=config("db_pw"),
-#             database=config("db_name")
-#             )
-#         self.cur = self.connection.cursor()
-
-#     def fetch_from_table(self, table, column, value, many=None):
-#         self.cur.execute(
-#             f"""
-#             SELECT * FROM {table}
-#             WHERE {column} = '{value}';
-#             """
-#         )
-
-#         if not many:
-#             result = self.cur.fetchone()
-#         else:
-#             result = self.cur.fetchall()
-
-#         self.cur.close()
-#         self.connection.close()
-
-#         return result
-
-#     def fetch_all_from_table(self, table):
-#         self.cur.execute(
-#             f"""
-#             SELECT * FROM {table}
-#             """
-#         )
-
-#         result = self.cur.fetchall()
-#         self.cur.close()
-#         self.connection.close()
-
-#         return result
-
-
-# LUCILE
-# temp_loader = DBHandler()
-# temp_loader.create_tables()
+    @db_decorator
+    async def select_all_from_table(self, table):
+        self.cur.execute(
+            f"SELECT COUNT(*) FROM {table}"
+        )
+        print(self.cur.fetchall())
+        self.conn.commit()
