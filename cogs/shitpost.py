@@ -1,14 +1,13 @@
 import discord
 from discord.ext import commands
 
-from .utils.resources import JsonLoader, MPSender
-from .utils.ressources_yaoi import YaoiGenerator
-from .utils.shitpost import *
+from .utils.tools import JsonLoader, MPSender
 
 class Shitpost(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.replier = JsonLoader('nonsense_replies')
+        self.yaoi_replier = JsonLoader('yaoi_prompts')
 
     @commands.command()
     async def dimitri(self, ctx):
@@ -45,9 +44,7 @@ class Shitpost(commands.Cog):
 
     @commands.command()
     async def yaoi(self, ctx):
-        prompt = YaoiGenerator.return_random_prompt()
-
-        await ctx.send(f"Les divinités du yaoi ont choisi...\n\n```{prompt}```")
+        await ctx.send(f"Les divinités du yaoi ont choisi...\n\n```{self.yaoi_replier.get_random('yaoi')}```")
 
     @commands.command(aliases=['q', 'Q'])
     async def queenie(self, ctx, *, message=None):

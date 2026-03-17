@@ -65,4 +65,8 @@ shitpost_text = """
     `!sne` *pour simuleer Sne, parce que vous le ouvez*
     `ALIAS : Aucun`
     `FORMAT : !sne`
+
+    `!yaoi` *recevez votre prompt yaoi gratuit !*
+    `ALIAS : Aucun`
+    `FORMAT : !yaoi`
     """
