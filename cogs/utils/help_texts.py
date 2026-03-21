@@ -15,11 +15,11 @@ coureur_text = """
     """
 
 productivity_text = """
-    `!ajoutermot` *pour ajouter un mot rare que vous aimez.*
+    `!ajoutermot` *ajouter un mot rare à la collection d'Eriza.*
     `ALIAS : !am`
     `FORMAT : !am motrare`
 
-    `!appels` *pour recevoir par MP une liste d'appels à texte listés par date de rendu.*
+    `!appels` *pour recevoir par MP une liste d'appels à texte par date de rendu.*
     `ALIAS : !a`
 
     `!cerveau` *pour recevoir un rappel à une heure de votre choix.*
@@ -31,7 +31,7 @@ productivity_text = """
     """
 
 shitpost_text = """
-    `!dimitri` *pour recevoir une dose de Dimitri.*
+    `!dimitri` *votre dose de Dimitri.*
 
     `!drama` *DUN DUN DUUUUUUN.*
     `ALIAS : !d`
@@ -43,12 +43,12 @@ shitpost_text = """
 
     `!gego` *pour recevoir une dose de Geto/Gojo.*
     
-    `!gojo` *pour recevoir une dose de Gojo.* :warning: ATTENTION : spoilers pour le manga.
+    `!gojo` *pour recevoir une dose de Gojo.*
     `ALIAS : !g`
 
     `!nanami` *pour recevoir une dose de Nanami.*
 
-    `!ouin` *pour recevoir du soutien dans les moments de détresse.*
+    `!ouin` *pour les moments de détresse.*
     `ALIAS : !o`
 
     `!pine` *Il est l'heure de savoir qui vous êtes.*
@@ -66,7 +66,7 @@ shitpost_text = """
     `ALIAS : Aucun`
     `FORMAT : !sne`
 
-    `!yaoi` *recevez votre prompt yaoi gratuit !*
+    `!yaoi` *votre prompt yaoi gratuit !*
     `ALIAS : Aucun`
     `FORMAT : !yaoi`
     """

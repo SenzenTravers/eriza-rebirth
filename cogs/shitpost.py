@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 
+from .utils.shitpost import fanfic_it, queenize
 from .utils.tools import JsonLoader, MPSender
 
 class Shitpost(commands.Cog):
