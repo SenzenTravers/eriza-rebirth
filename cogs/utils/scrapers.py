@@ -135,6 +135,7 @@ class WritingContest:
             else bit
             for bit in contest_list]
 
+#TODO: check this
 URL_TEST = "http://127.0.0.1:8000/"
 class ShardsGame:
     @staticmethod

@@ -1,14 +1,29 @@
 import discord
 from discord.ext import commands
 
+from .utils.birthday_handler import BirthdayHandler
 from .utils.shitpost import fanfic_it, queenize
 from .utils.tools import JsonLoader, MPSender
+
 
 class Shitpost(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.replier = JsonLoader('nonsense_replies')
         self.yaoi_replier = JsonLoader('yaoi_prompts')
+
+    @commands.command(aliases=["ann"])
+    async def anniversaire(self, ctx, birthday=None):
+        if not birthday:
+            await ctx.send("J'ai besoin de votre anniversaire au format AAAA-MM-JJ.")
+            return
+        
+        message = await BirthdayHandler.send_birthday(
+            ctx.message.author.id, birthday
+        )
+        await ctx.send(
+            message
+        )
 
     @commands.command()
     async def dimitri(self, ctx):
@@ -17,6 +32,11 @@ class Shitpost(commands.Cog):
     @commands.command(aliases=["d", "D"])
     async def drama(self, ctx):
         await ctx.send(self.replier.get_random("drama"))
+
+    @commands.command()
+    async def fic(self, ctx, *, pairing=None):
+        message = fanfic_it(pairing) if pairing else "Filez-moi un pairing à ficcer, mécréant !"
+        await ctx.send(message)
 
     @commands.command()
     async def gego(self, ctx):
@@ -37,31 +57,6 @@ class Shitpost(commands.Cog):
     @commands.command(aliases=['o', 'O'])
     async def ouin(self, ctx):
         await ctx.send(self.replier.get_random("ouin"))
-
-    @commands.command()
-    async def fic(self, ctx, *, pairing=None):
-        message = fanfic_it(pairing) if pairing else "Filez-moi un pairing à ficcer, mécréant !"
-        await ctx.send(message)
-
-    @commands.command()
-    async def yaoi(self, ctx):
-        await ctx.send(f"Les divinités du yaoi ont choisi...\n\n```{self.yaoi_replier.get_random('yaoi')}```")
-
-    @commands.command(aliases=['q', 'Q'])
-    async def queenie(self, ctx, *, message=None):
-        if message == None:
-            message = "Certes, mais que dois-je queener ?"
-        else:
-            message = f"Ainsi parla Queenie : {queenize(message)}"
-        await ctx.send(message)
-
-    @commands.command()
-    async def sen(self, ctx):
-        await ctx.send(self.replier.get_random("sen"))
-
-    @commands.command()
-    async def sne(self, ctx):
-        await ctx.send(queenize(self.replier.get_random("sen")))
 
     @commands.command()
     async def pine(self, ctx):
@@ -93,6 +88,26 @@ class Shitpost(commands.Cog):
 
         chosen_one = random.choice(candidates)
         await ctx.send(f":star2::star2::star2: **{chosen_one['name']}**{filler_text} :star2::star2::star2:\n\n{chosen_one['img']}")
+
+    @commands.command(aliases=['q', 'Q'])
+    async def queenie(self, ctx, *, message=None):
+        if message == None:
+            message = "Certes, mais que dois-je queener ?"
+        else:
+            message = f"Ainsi parla Queenie : {queenize(message)}"
+        await ctx.send(message)
+
+    @commands.command()
+    async def sen(self, ctx):
+        await ctx.send(self.replier.get_random("sen"))
+
+    @commands.command()
+    async def sne(self, ctx):
+        await ctx.send(queenize(self.replier.get_random("sen")))
+
+    @commands.command()
+    async def yaoi(self, ctx):
+        await ctx.send(f"Les divinités du yaoi ont choisi...\n\n```{self.yaoi_replier.get_random('yaoi')}```")
 
 
 async def setup(bot):
